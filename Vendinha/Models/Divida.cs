@@ -19,5 +19,7 @@ namespace Vendinha.Models {
 
         [Range(1, int.MaxValue)]//impedir que o id seja 0
         public int ClienteId {  get; set; }
+
+        public Cliente Cliente { get; set; } = null!;//Acessar o objeto do Cliente//o ! é apra tirar o aviso
     }
 }

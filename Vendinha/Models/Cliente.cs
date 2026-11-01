@@ -20,6 +20,7 @@ namespace Vendinha.Models {
 
         public DateTime DataNascimento { get; set; }//Melhor pegar só a data sem horário
 
+        [Range(18, 9999)]
         [NotMapped]//vai informar para o ENtity Framework para não armazenar no PostGre
         public int Idade {
             get {
@@ -46,6 +47,8 @@ namespace Vendinha.Models {
                 }
             }
         }
+
+        public List<Divida> Dividas { get; set; } = new List<Divida>();//coleção de dívidas associadas aos clientes
         
     }
 }

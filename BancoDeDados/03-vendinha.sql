@@ -13,7 +13,7 @@ CREATE TABLE clientes(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	nome VARCHAR(100) NOT NULL,
 	cpf VARCHAR(11) NOT NULL UNIQUE, --CHAR no postgree vai completar os números que faltarem com espaço, já oi varchar NÂO
-	dataNascimento DATE NOT NULL,
+	"dataNascimento" DATE NOT NULL,-- precisa das aspas duplas se não o postgre vai deixar tudo em minuscúlas
 	--idade			--NÃO CRIAR AQUI USAR A dataNascimento para calculcar no progama
 	email VARCHAR(100) --APENAS VALIDAR SE INFORMADO
 );
@@ -22,11 +22,11 @@ CREATE TABLE dividas(
 	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	valor NUMERIC(10, 2) NOT NULL,
 	paga BOOL NOT NULL DEFAULT FALSE,
-	dataCriacao DATE NOT NULL,
-	dataPagamento DATE DEFAULT NULL,
-	clienteId INT NOT NULL,
+	"dataCriacao" DATE NOT NULL,
+	"dataPagamento" DATE DEFAULT NULL,
+	"clienteId" INT NOT NULL,
 
-	FOREIGN KEY (clienteId)
+	FOREIGN KEY ("clienteId")
 	REFERENCES clientes(id)
 );
 
@@ -34,14 +34,14 @@ CREATE TABLE dividas(
 --Pois a validação como a regra do cpf será feita apenas no back
 --CONFIRA ANTES DE MANDAR ESSES INSERTS NO PROJETO FINAL
 INSERT INTO clientes
-	(nome, cpf, dataNascimento, email)
+	(nome, cpf, "dataNascimento", email)
 VALUES
 	('Jonathan', '00000000000', '1995-03-18', 'jonathan@email.com'),
 	('Johnny', '11111111111', '1995-03-18', 'JHON@email.com'),
 	('teste', '22222222222', '1995-03-18', 'teste@email.com');
 
 INSERT INTO dividas
-	(valor, paga, dataCriacao, dataPagamento, clienteId)
+	(valor, paga, "dataCriacao", "dataPagamento", "clienteId")
 VALUES
 	(12.35, TRUE, '2026-10-20', '2026-10-21', 1),
     (12.35, FALSE, '2026-10-20', NULL, 2),
