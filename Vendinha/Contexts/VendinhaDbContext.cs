@@ -44,5 +44,12 @@ namespace Vendinha.Contexts {
             base.OnModelCreating(construtorModelo);
 
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder construtorOpcoes) {
+            if(!string.IsNullOrEmpty(stringDeConexao))//Vendo se a string de conexão não está vazia ou é nula
+                construtorOpcoes.UseNpgsql(stringDeConexao);//Configura o provedor Postgre com a string de conexão
+            base.OnConfiguring(construtorOpcoes);//Chama a implementação da classe base,nesse caso a DbContext
+        }
+
     }
 }
