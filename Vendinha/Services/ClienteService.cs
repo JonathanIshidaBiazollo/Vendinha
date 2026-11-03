@@ -80,6 +80,15 @@ namespace Vendinha.Services {
                 return false;
             }
 
+            //Verificando se existe algum cpf igual já cadastrado no banco
+            bool cpfExiste = contexto.Clientes
+                .Any(c => c.Cpf == cliente.Cpf);
+
+            if (cpfExiste) {
+                erros.Add(new ValidationResult("CPF já cadastrado!"));
+                return false;
+            }
+
             contexto.Clientes.Add(cliente);
             contexto.SaveChanges();
 
