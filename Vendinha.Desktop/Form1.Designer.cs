@@ -30,7 +30,7 @@
             dtpDataNascimento = new DateTimePicker();
             lblEmail = new Label();
             txtEmail = new TextBox();
-            txtCpf = new MaskedTextBox();
+            mskCpf = new MaskedTextBox();
             btnCadastrar = new Button();
             SuspendLayout();
             // 
@@ -94,14 +94,14 @@
             txtEmail.Size = new Size(125, 27);
             txtEmail.TabIndex = 7;
             // 
-            // txtCpf
+            // mskCpf
             // 
-            txtCpf.Location = new Point(159, 172);
-            txtCpf.Mask = "000.000.000-00";
-            txtCpf.Name = "txtCpf";
-            txtCpf.Size = new Size(125, 27);
-            txtCpf.TabIndex = 8;
-            txtCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mskCpf.Location = new Point(159, 172);
+            mskCpf.Mask = "000.000.000-00";
+            mskCpf.Name = "mskCpf";
+            mskCpf.Size = new Size(125, 27);
+            mskCpf.TabIndex = 8;
+            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             // 
             // btnCadastrar
             // 
@@ -119,7 +119,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 603);
             Controls.Add(btnCadastrar);
-            Controls.Add(txtCpf);
+            Controls.Add(mskCpf);
             Controls.Add(txtEmail);
             Controls.Add(lblEmail);
             Controls.Add(dtpDataNascimento);
@@ -146,7 +146,7 @@
         private DateTimePicker dtpDataNascimento;
         private Label lblEmail;
         private TextBox txtEmail;
-        private MaskedTextBox txtCpf;
+        private MaskedTextBox mskCpf;
         private Button btnCadastrar;
     }
 }
