@@ -23,6 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblNome = new Label();
             txtNome = new TextBox();
             lblCpf = new Label();
@@ -32,6 +33,13 @@
             txtEmail = new TextBox();
             mskCpf = new MaskedTextBox();
             btnCadastrar = new Button();
+            dgvClientes = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            ColCpf = new DataGridViewTextBoxColumn();
+            colDataNascimento = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // lblNome
@@ -113,11 +121,67 @@
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
+            // dgvClientes
+            // 
+            dgvClientes.AllowUserToAddRows = false;
+            dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, ColCpf, colDataNascimento, colEmail });
+            dgvClientes.Location = new Point(350, 65);
+            dgvClientes.MultiSelect = false;
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
+            dgvClientes.RowHeadersWidth = 51;
+            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvClientes.Size = new Size(936, 343);
+            dgvClientes.TabIndex = 10;
+            // 
+            // colId
+            // 
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.MinimumWidth = 6;
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.MinimumWidth = 6;
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // ColCpf
+            // 
+            ColCpf.HeaderText = "C.P.F.";
+            ColCpf.MinimumWidth = 6;
+            ColCpf.Name = "ColCpf";
+            ColCpf.ReadOnly = true;
+            // 
+            // colDataNascimento
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
+            colDataNascimento.HeaderText = "Data de Nascimento";
+            colDataNascimento.MinimumWidth = 6;
+            colDataNascimento.Name = "colDataNascimento";
+            colDataNascimento.ReadOnly = true;
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "Email";
+            colEmail.MinimumWidth = 6;
+            colEmail.Name = "colEmail";
+            colEmail.ReadOnly = true;
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(882, 603);
+            AutoSize = true;
+            ClientSize = new Size(1346, 603);
+            Controls.Add(dgvClientes);
             Controls.Add(btnCadastrar);
             Controls.Add(mskCpf);
             Controls.Add(txtEmail);
@@ -133,6 +197,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Vendinha - Cadastro de clientes";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,5 +213,11 @@
         private TextBox txtEmail;
         private MaskedTextBox mskCpf;
         private Button btnCadastrar;
+        private DataGridView dgvClientes;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn ColCpf;
+        private DataGridViewTextBoxColumn colDataNascimento;
+        private DataGridViewTextBoxColumn colEmail;
     }
 }

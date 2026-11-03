@@ -6,8 +6,15 @@ namespace Vendinha.Desktop {
     public partial class TelaClientes : Form {
         public TelaClientes() {
             InitializeComponent();
+            CarregarClientes();
         }
 
+        private void CarregarClientes(){
+            dgvClientes.AutoGenerateColumns = false;
+            ClienteService servico = new ClienteService();
+
+            dgvClientes.DataSource = servico.Consultar();
+        }
         private void Form1_Load(object sender, EventArgs e) {
 
         }
