@@ -23,7 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblNome = new Label();
             txtNome = new TextBox();
             lblCpf = new Label();
@@ -41,6 +41,7 @@
             colEmail = new DataGridViewTextBoxColumn();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
+            btnExcluir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -163,8 +164,8 @@
             // 
             // colDataNascimento
             // 
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
             colDataNascimento.HeaderText = "Data de Nascimento";
             colDataNascimento.MinimumWidth = 6;
             colDataNascimento.Name = "colDataNascimento";
@@ -194,12 +195,23 @@
             lblPesquisar.TabIndex = 12;
             lblPesquisar.Text = "Digite aqui no nome do cliente que deseja pesquisar";
             // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(353, 435);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(94, 29);
+            btnExcluir.TabIndex = 13;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1346, 603);
+            Controls.Add(btnExcluir);
             Controls.Add(lblPesquisar);
             Controls.Add(txtPesquisar);
             Controls.Add(dgvClientes);
@@ -242,5 +254,6 @@
         private DataGridViewTextBoxColumn colEmail;
         private TextBox txtPesquisar;
         private Label lblPesquisar;
+        private Button btnExcluir;
     }
 }

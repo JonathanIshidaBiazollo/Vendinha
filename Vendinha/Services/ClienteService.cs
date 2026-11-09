@@ -95,5 +95,27 @@ namespace Vendinha.Services {
 
             return true;
         }
+
+        public bool Excluir(int id) {
+            var cliente = contexto.Clientes.
+                FirstOrDefault(c => c.Id == id);
+
+            if (cliente == null) {
+                return false;
+            }
+
+            //Verifica se tem alguma dívida no banco que possua o id do cliente selecionado
+            bool possuiDividas = contexto.
+                Dividas.Any(d => d.ClienteId == id);
+
+            if(possuiDividas) {
+                return false;
+            }
+
+            contexto.Clientes.Remove(cliente);//Marca o cliente para a exlclusão
+            contexto.SaveChanges();//Apaga do banco o cliente que passou por todas as validações
+            return true;
+            
+        }
     }
 }

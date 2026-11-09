@@ -79,5 +79,34 @@ namespace Vendinha.Desktop {
 
             CarregarClientes(resultado);
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e) {
+            if(dgvClientes.SelectedRows.Count == 0) {
+                MessageBox.Show("Selecione um cliente para excluir");
+                return;
+            }
+
+            int id = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells[0].Value);
+            var resposta = MessageBox.Show(
+                "Deseja realmente excluir o cliente selecionado?",
+                "Confirma a exclusão?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+
+            if(resposta == DialogResult.Yes) {
+                bool excluido = servico.Excluir(id);
+
+                if (excluido) {
+                    MessageBox.Show("Cliente excluído com sucesso");
+                    CarregarDados();
+                } else {
+                    MessageBox.Show("Não foi possível excluir o cliente,\n" +
+                                    "Ele possuí dívidas cadastradas\n" +
+                                    "Ou não existe mais"
+                                    );
+                }
+            }
+        }
     }
 }
