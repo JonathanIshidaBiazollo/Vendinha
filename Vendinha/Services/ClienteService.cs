@@ -160,5 +160,9 @@ namespace Vendinha.Services {
                 .Take(registrosPorPagina)
                 .ToList();
         }
+
+        public int contarClientes() {
+            return contexto.Clientes.Count();
+        }
     }
 }

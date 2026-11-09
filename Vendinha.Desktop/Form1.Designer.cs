@@ -243,7 +243,7 @@
             // 
             // btnProximo
             // 
-            btnProximo.Location = new Point(814, 428);
+            btnProximo.Location = new Point(930, 428);
             btnProximo.Name = "btnProximo";
             btnProximo.Size = new Size(94, 29);
             btnProximo.TabIndex = 16;
@@ -254,11 +254,11 @@
             // lblPágina
             // 
             lblPágina.AutoSize = true;
-            lblPágina.Location = new Point(718, 429);
+            lblPágina.Location = new Point(755, 428);
             lblPágina.Name = "lblPágina";
-            lblPágina.Size = new Size(50, 20);
+            lblPágina.Size = new Size(92, 20);
             lblPágina.TabIndex = 17;
-            lblPágina.Text = "label1";
+            lblPágina.Text = "Página Atual";
             // 
             // TelaClientes
             // 

@@ -164,15 +164,22 @@ namespace Vendinha.Desktop {
         }
 
         private void btnProximo_Click(object sender, EventArgs e) {
-            paginaAtual++;
-            lblPágina.Text = paginaAtual.ToString();
-            CarregarDados();
+            var totalDePaginas = servico.contarClientes()/10;
+            if(paginaAtual <  totalDePaginas) {
+                paginaAtual++;
+                lblPágina.Text = paginaAtual.ToString();
+                CarregarDados();
+            }
+            
         }
 
         private void btnAnterior_Click(object sender, EventArgs e) {
-            paginaAtual--;
-            lblPágina.Text = paginaAtual.ToString();
-            CarregarDados();
+            if(paginaAtual > 1) {
+                paginaAtual--;
+                lblPágina.Text = paginaAtual.ToString();
+                CarregarDados();
+            }
+            
         }
     }
 }
