@@ -23,7 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             lblNome = new Label();
             txtNome = new TextBox();
             lblCpf = new Label();
@@ -44,6 +44,9 @@
             btnExcluir = new Button();
             btnEditar = new Button();
             btnCancelarEdicao = new Button();
+            btnAnterior = new Button();
+            btnProximo = new Button();
+            lblPágina = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -166,8 +169,8 @@
             // 
             // colDataNascimento
             // 
-            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
             colDataNascimento.HeaderText = "Data de Nascimento";
             colDataNascimento.MinimumWidth = 6;
             colDataNascimento.Name = "colDataNascimento";
@@ -228,12 +231,42 @@
             btnCancelarEdicao.Visible = false;
             btnCancelarEdicao.Click += btnCancelarEdicao_Click;
             // 
+            // btnAnterior
+            // 
+            btnAnterior.Location = new Point(543, 429);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.Size = new Size(94, 29);
+            btnAnterior.TabIndex = 15;
+            btnAnterior.Text = "Anterior";
+            btnAnterior.UseVisualStyleBackColor = true;
+            // 
+            // btnProximo
+            // 
+            btnProximo.Location = new Point(814, 428);
+            btnProximo.Name = "btnProximo";
+            btnProximo.Size = new Size(94, 29);
+            btnProximo.TabIndex = 16;
+            btnProximo.Text = "Próximo";
+            btnProximo.UseVisualStyleBackColor = true;
+            // 
+            // lblPágina
+            // 
+            lblPágina.AutoSize = true;
+            lblPágina.Location = new Point(718, 429);
+            lblPágina.Name = "lblPágina";
+            lblPágina.Size = new Size(50, 20);
+            lblPágina.TabIndex = 17;
+            lblPágina.Text = "label1";
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1346, 603);
+            Controls.Add(lblPágina);
+            Controls.Add(btnProximo);
+            Controls.Add(btnAnterior);
             Controls.Add(btnCancelarEdicao);
             Controls.Add(btnEditar);
             Controls.Add(btnExcluir);
@@ -283,5 +316,8 @@
         private Button btnExcluir;
         private Button btnEditar;
         private Button btnCancelarEdicao;
+        private Button btnAnterior;
+        private Button btnProximo;
+        private Label lblPágina;
     }
 }

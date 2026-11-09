@@ -8,7 +8,8 @@ namespace Vendinha.Desktop {
     public partial class TelaClientes : Form {
         private ClienteService servico;
         private int? idClienteEdicao = null;//o ? é para permitir o valor null nessa variável do tipo inteiro
-
+        private int paginaAtual = 1;
+        private int registrosPorPagina = 10;
         public TelaClientes() {
             InitializeComponent();
 
