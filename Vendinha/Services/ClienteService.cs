@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DotNetEnv;//APAGAR ESSE TRECHO JÁ QUE O .ENV NÃO FOI ENVIADO PARA O GITHUB
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Vendinha.Contexts;
 using Vendinha.Models;
-using DotNetEnv;//APAGAR ESSE TRECHO JÁ QUE O .ENV NÃO FOI ENVIADO PARA O GITHUB
-using System.ComponentModel.DataAnnotations;
 
 namespace Vendinha.Services {
     public class ClienteService {
@@ -61,7 +62,7 @@ namespace Vendinha.Services {
         //Lista SOMENTE os clientes que atendem as ESPECIFICAÇÕES do FILTRO
         public List<Cliente> Consultar(string pesquisa) {
             var resultado  = contexto.Clientes
-                .Where(c =>  c.Nome.ToLower().Contains((pesquisa)))
+                .Where(c => EF.Functions.ILike(c.Nome, $"%{pesquisa}%"))
                 .OrderBy(c => c.Nome)
                 .ToList();
 

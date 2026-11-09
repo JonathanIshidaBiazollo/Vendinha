@@ -23,7 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblNome = new Label();
             txtNome = new TextBox();
             lblCpf = new Label();
@@ -39,6 +39,8 @@
             ColCpf = new DataGridViewTextBoxColumn();
             colDataNascimento = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
+            txtPesquisar = new TextBox();
+            lblPesquisar = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -161,8 +163,8 @@
             // 
             // colDataNascimento
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle2;
             colDataNascimento.HeaderText = "Data de Nascimento";
             colDataNascimento.MinimumWidth = 6;
             colDataNascimento.Name = "colDataNascimento";
@@ -175,12 +177,31 @@
             colEmail.Name = "colEmail";
             colEmail.ReadOnly = true;
             // 
+            // txtPesquisar
+            // 
+            txtPesquisar.Location = new Point(718, 23);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(568, 27);
+            txtPesquisar.TabIndex = 11;
+            txtPesquisar.TextChanged += txtPesquisar_TextChanged;
+            // 
+            // lblPesquisar
+            // 
+            lblPesquisar.AutoSize = true;
+            lblPesquisar.Location = new Point(353, 26);
+            lblPesquisar.Name = "lblPesquisar";
+            lblPesquisar.Size = new Size(359, 20);
+            lblPesquisar.TabIndex = 12;
+            lblPesquisar.Text = "Digite aqui no nome do cliente que deseja pesquisar";
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1346, 603);
+            Controls.Add(lblPesquisar);
+            Controls.Add(txtPesquisar);
             Controls.Add(dgvClientes);
             Controls.Add(btnCadastrar);
             Controls.Add(mskCpf);
@@ -219,5 +240,7 @@
         private DataGridViewTextBoxColumn ColCpf;
         private DataGridViewTextBoxColumn colDataNascimento;
         private DataGridViewTextBoxColumn colEmail;
+        private TextBox txtPesquisar;
+        private Label lblPesquisar;
     }
 }

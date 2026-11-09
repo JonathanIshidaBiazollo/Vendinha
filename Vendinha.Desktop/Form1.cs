@@ -2,6 +2,7 @@ using Vendinha.Models;
 using Vendinha.Services;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace Vendinha.Desktop {
     public partial class TelaClientes : Form {
@@ -19,7 +20,7 @@ namespace Vendinha.Desktop {
             var clientes = servico.Consultar();
             CarregarClientes(clientes);
         }
-        private void CarregarClientes(List<Cliente> lista){
+        private void CarregarClientes(List<Cliente> lista) {
             dgvClientes.Rows.Clear();
 
             foreach (var cliente in lista) {
@@ -41,7 +42,7 @@ namespace Vendinha.Desktop {
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e) {
-            Cliente cliente = new Cliente{
+            Cliente cliente = new Cliente {
                 Nome = txtNome.Text,
                 Cpf = mskCpf.Text,
                 DataNascimento = dtpDataNascimento.Value.Date,
@@ -70,6 +71,13 @@ namespace Vendinha.Desktop {
 
                 MessageBox.Show(msg, "Erro de validação, tente novamente");
             }
+        }
+
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e) {
+            var resultado = servico.Consultar(txtPesquisar.Text);
+
+            CarregarClientes(resultado);
         }
     }
 }
