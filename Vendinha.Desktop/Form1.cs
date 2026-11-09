@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Vendinha.Desktop {
     public partial class TelaClientes : Form {
         private ClienteService servico;
+        private int? idClienteEdicao = null;//o ? é para permitir o valor null nessa variável do tipo inteiro
 
         public TelaClientes() {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace Vendinha.Desktop {
         private void CarregarDados() {
             var clientes = servico.Consultar();
             CarregarClientes(clientes);
+
         }
         private void CarregarClientes(List<Cliente> lista) {
             dgvClientes.Rows.Clear();
@@ -32,6 +34,8 @@ namespace Vendinha.Desktop {
                     cliente.Email
                 );
             }
+
+            dgvClientes.ClearSelection();//Pra que o dgv não selecione automaticamente a primeira linha da tabela
         }
         private void Form1_Load(object sender, EventArgs e) {
 
@@ -49,27 +53,46 @@ namespace Vendinha.Desktop {
                 Email = txtEmail.Text
             };
 
-            ClienteService servico = new ClienteService();
             List<ValidationResult> erros;
-            bool cadastrado = servico.Criar(cliente, out erros);
+            bool sucesso;
 
-            if (cadastrado) {
-                MessageBox.Show("Cliente Cadastrado com sucesso");
+            //Ver se é cadastro ou edição
+            if(idClienteEdicao == null) { 
+                 sucesso = servico.Criar(cliente, out erros);
+            } else {
+                cliente.Id = idClienteEdicao.Value;
+                sucesso = servico.Atualizar(cliente, out erros);
+            }
+
+            if (sucesso) {
+                if(idClienteEdicao == null) {
+                    MessageBox.Show("Cliente cadastrado com sucesso");
+                } else {
+                    MessageBox.Show("Cliente Atulizado com sucesso");
+                }
 
                 txtNome.Clear();
                 mskCpf.Clear();
                 txtEmail.Clear();
                 dtpDataNascimento.Value = DateTime.Today;
 
+                idClienteEdicao = null;
+                btnCadastrar.Text = "Cadastrar";
+                btnCancelarEdicao.Visible = false;
+
                 CarregarDados();
             } else {
                 string msg = "";
 
-                foreach (ValidationResult erro in erros) {
+                foreach(ValidationResult erro in erros) {
                     msg += erro.ErrorMessage + "\n";
                 }
 
-                MessageBox.Show(msg, "Erro de validação, tente novamente");
+                if(string.IsNullOrEmpty(msg)) {
+                    msg = "Verifique se o cliente ainda existe";
+                }
+
+                MessageBox.Show(msg, "Erro, Tente Novamente");
             }
         }
 
@@ -81,7 +104,7 @@ namespace Vendinha.Desktop {
         }
 
         private void btnExcluir_Click(object sender, EventArgs e) {
-            if(dgvClientes.SelectedRows.Count == 0) {
+            if (dgvClientes.SelectedRows.Count == 0) {
                 MessageBox.Show("Selecione um cliente para excluir");
                 return;
             }
@@ -94,7 +117,7 @@ namespace Vendinha.Desktop {
                 MessageBoxIcon.Question
                 );
 
-            if(resposta == DialogResult.Yes) {
+            if (resposta == DialogResult.Yes) {
                 bool excluido = servico.Excluir(id);
 
                 if (excluido) {
@@ -107,6 +130,35 @@ namespace Vendinha.Desktop {
                                     );
                 }
             }
+        }
+
+        private void TelaClientes_Shown(object sender, EventArgs e) {
+            dgvClientes.ClearSelection();//Pra que o dgv não selecione automaticamente a primeira linha da tabela
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e) {
+            if (dgvClientes.SelectedRows.Count == 0) {
+                MessageBox.Show("Selecione um cliente para editar");
+                return;
+            }
+
+            idClienteEdicao = Convert.ToInt32(dgvClientes.SelectedRows[0].Cells[0].Value);
+            txtNome.Text = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();
+            mskCpf.Text = dgvClientes.SelectedRows[0].Cells[2].Value.ToString();
+            dtpDataNascimento.Value = Convert.ToDateTime(dgvClientes.SelectedRows[0].Cells[3].Value);//Essa conversão diferente é por causa do formato DateTime
+            txtEmail.Text = dgvClientes.SelectedRows[0].Cells[4].Value?.ToString() ?? "";//esses ? e "" é pq como email pode ser nulo, se de fato ele for vai causar um erro
+            btnCadastrar.Text = "Salvar Alterações";
+            btnCancelarEdicao.Visible = true;
+        }
+
+        private void btnCancelarEdicao_Click(object sender, EventArgs e) {
+            idClienteEdicao = null;
+            txtNome.Text = "";
+            mskCpf.Text = "";
+            txtEmail.Text = "";
+            dtpDataNascimento.Value = DateTime.Today;
+            btnCadastrar.Text = "Cadastrar";
+            btnCancelarEdicao.Visible = false;
         }
     }
 }

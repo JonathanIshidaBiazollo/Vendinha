@@ -23,7 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblNome = new Label();
             txtNome = new TextBox();
             lblCpf = new Label();
@@ -42,6 +42,8 @@
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
             btnExcluir = new Button();
+            btnEditar = new Button();
+            btnCancelarEdicao = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -116,9 +118,9 @@
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(160, 452);
+            btnCadastrar.Location = new Point(103, 455);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(94, 29);
+            btnCadastrar.Size = new Size(151, 29);
             btnCadastrar.TabIndex = 9;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = true;
@@ -164,8 +166,8 @@
             // 
             // colDataNascimento
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle2;
             colDataNascimento.HeaderText = "Data de Nascimento";
             colDataNascimento.MinimumWidth = 6;
             colDataNascimento.Name = "colDataNascimento";
@@ -197,7 +199,7 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(353, 435);
+            btnExcluir.Location = new Point(1192, 428);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(94, 29);
             btnExcluir.TabIndex = 13;
@@ -205,12 +207,35 @@
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(103, 502);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(151, 29);
+            btnEditar.TabIndex = 0;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnCancelarEdicao
+            // 
+            btnCancelarEdicao.Location = new Point(260, 455);
+            btnCancelarEdicao.Name = "btnCancelarEdicao";
+            btnCancelarEdicao.Size = new Size(143, 29);
+            btnCancelarEdicao.TabIndex = 14;
+            btnCancelarEdicao.Text = "Cancelar Edição";
+            btnCancelarEdicao.UseVisualStyleBackColor = true;
+            btnCancelarEdicao.Visible = false;
+            btnCancelarEdicao.Click += btnCancelarEdicao_Click;
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1346, 603);
+            Controls.Add(btnCancelarEdicao);
+            Controls.Add(btnEditar);
             Controls.Add(btnExcluir);
             Controls.Add(lblPesquisar);
             Controls.Add(txtPesquisar);
@@ -230,6 +255,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Vendinha - Cadastro de clientes";
             Load += Form1_Load;
+            Shown += TelaClientes_Shown;
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -255,5 +281,7 @@
         private TextBox txtPesquisar;
         private Label lblPesquisar;
         private Button btnExcluir;
+        private Button btnEditar;
+        private Button btnCancelarEdicao;
     }
 }

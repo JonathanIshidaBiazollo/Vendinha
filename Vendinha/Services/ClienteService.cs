@@ -77,7 +77,7 @@ namespace Vendinha.Services {
         }
 
         public bool Criar(Cliente cliente, out List <ValidationResult> erros){
-            if(!Validar(cliente, out erros)) {//se apresentat retorna falso e impede o cadastro de um novo cliente, se não cadastra normalmente
+            if(!Validar(cliente, out erros)) {//se apresentar retorna falso e impede o cadastro de um novo cliente, se não cadastra normalmente
                 return false;
             }
 
@@ -114,6 +114,43 @@ namespace Vendinha.Services {
 
             contexto.Clientes.Remove(cliente);//Marca o cliente para a exlclusão
             contexto.SaveChanges();//Apaga do banco o cliente que passou por todas as validações
+            return true;
+            
+        }
+
+        public bool Atualizar(Cliente clienteAtualizado, out List<ValidationResult> erros) {
+            erros = new List<ValidationResult>();
+
+            var cliente = contexto.Clientes.
+                FirstOrDefault(c => c.Id == clienteAtualizado.Id);
+
+            if(cliente == null) { 
+                return false;
+            }
+
+            if(!Validar(clienteAtualizado, out erros)) {//se apresentar retorna falso e impede o cadastro de um novo cliente, se não cadastra normalmente
+                return false;
+            }
+
+            bool cpfExiste = contexto.Clientes
+                .Any(c => c.Cpf == clienteAtualizado.Cpf
+                       && c.Id != clienteAtualizado.Id);
+
+            System.Diagnostics.Debug.WriteLine($"ID recebido: {clienteAtualizado.Id}");
+System.Diagnostics.Debug.WriteLine($"CPF recebido: {clienteAtualizado.Cpf}");
+System.Diagnostics.Debug.WriteLine($"CPF duplicado: {cpfExiste}");
+            if (cpfExiste) {
+                erros.Add(new ValidationResult("CPF já cadastrado!"));
+                return false;
+            }
+
+            cliente.Nome = clienteAtualizado.Nome;
+            cliente.Cpf = clienteAtualizado.Cpf;
+            cliente.DataNascimento = clienteAtualizado.DataNascimento;
+            cliente.Email = clienteAtualizado.Email;
+
+            
+            contexto.SaveChanges();//Salva as alterações no banco
             return true;
             
         }
