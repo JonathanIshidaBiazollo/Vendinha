@@ -1,19 +1,36 @@
 using Vendinha.Models;
 using Vendinha.Services;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Vendinha.Desktop {
     public partial class TelaClientes : Form {
+        private ClienteService servico;
+
         public TelaClientes() {
             InitializeComponent();
-            CarregarClientes();
+
+            servico = new ClienteService();
+
+            CarregarDados();
         }
 
-        private void CarregarClientes(){
-            dgvClientes.AutoGenerateColumns = false;
-            ClienteService servico = new ClienteService();
+        private void CarregarDados() {
+            var clientes = servico.Consultar();
+            CarregarClientes(clientes);
+        }
+        private void CarregarClientes(List<Cliente> lista){
+            dgvClientes.Rows.Clear();
 
-            dgvClientes.DataSource = servico.Consultar();
+            foreach (var cliente in lista) {
+                dgvClientes.Rows.Add(
+                    cliente.Id,
+                    cliente.Nome,
+                    cliente.Cpf,
+                    cliente.DataNascimento.ToString("dd/MM/yyyy"),
+                    cliente.Email
+                );
+            }
         }
         private void Form1_Load(object sender, EventArgs e) {
 
@@ -42,6 +59,8 @@ namespace Vendinha.Desktop {
                 mskCpf.Clear();
                 txtEmail.Clear();
                 dtpDataNascimento.Value = DateTime.Today;
+
+                CarregarDados();
             } else {
                 string msg = "";
 
