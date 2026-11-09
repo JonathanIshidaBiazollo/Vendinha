@@ -19,7 +19,7 @@ namespace Vendinha.Desktop {
         }
 
         private void CarregarDados() {
-            var clientes = servico.Consultar();
+            var clientes = servico.ConsultarPagina(paginaAtual, registrosPorPagina);
             CarregarClientes(clientes);
 
         }
@@ -58,15 +58,15 @@ namespace Vendinha.Desktop {
             bool sucesso;
 
             //Ver se é cadastro ou edição
-            if(idClienteEdicao == null) { 
-                 sucesso = servico.Criar(cliente, out erros);
+            if (idClienteEdicao == null) {
+                sucesso = servico.Criar(cliente, out erros);
             } else {
                 cliente.Id = idClienteEdicao.Value;
                 sucesso = servico.Atualizar(cliente, out erros);
             }
 
             if (sucesso) {
-                if(idClienteEdicao == null) {
+                if (idClienteEdicao == null) {
                     MessageBox.Show("Cliente cadastrado com sucesso");
                 } else {
                     MessageBox.Show("Cliente Atulizado com sucesso");
@@ -85,11 +85,11 @@ namespace Vendinha.Desktop {
             } else {
                 string msg = "";
 
-                foreach(ValidationResult erro in erros) {
+                foreach (ValidationResult erro in erros) {
                     msg += erro.ErrorMessage + "\n";
                 }
 
-                if(string.IsNullOrEmpty(msg)) {
+                if (string.IsNullOrEmpty(msg)) {
                     msg = "Verifique se o cliente ainda existe";
                 }
 
@@ -135,6 +135,7 @@ namespace Vendinha.Desktop {
 
         private void TelaClientes_Shown(object sender, EventArgs e) {
             dgvClientes.ClearSelection();//Pra que o dgv não selecione automaticamente a primeira linha da tabela
+            lblPágina.Text = paginaAtual.ToString();
         }
 
         private void btnEditar_Click(object sender, EventArgs e) {
@@ -160,6 +161,18 @@ namespace Vendinha.Desktop {
             dtpDataNascimento.Value = DateTime.Today;
             btnCadastrar.Text = "Cadastrar";
             btnCancelarEdicao.Visible = false;
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e) {
+            paginaAtual++;
+            lblPágina.Text = paginaAtual.ToString();
+            CarregarDados();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e) {
+            paginaAtual--;
+            lblPágina.Text = paginaAtual.ToString();
+            CarregarDados();
         }
     }
 }

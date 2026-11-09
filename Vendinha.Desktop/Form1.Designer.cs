@@ -239,6 +239,7 @@
             btnAnterior.TabIndex = 15;
             btnAnterior.Text = "Anterior";
             btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
             // 
             // btnProximo
             // 
@@ -248,6 +249,7 @@
             btnProximo.TabIndex = 16;
             btnProximo.Text = "Próximo";
             btnProximo.UseVisualStyleBackColor = true;
+            btnProximo.Click += btnProximo_Click;
             // 
             // lblPágina
             // 

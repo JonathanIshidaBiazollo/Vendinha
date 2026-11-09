@@ -136,9 +136,6 @@ namespace Vendinha.Services {
                 .Any(c => c.Cpf == clienteAtualizado.Cpf
                        && c.Id != clienteAtualizado.Id);
 
-            System.Diagnostics.Debug.WriteLine($"ID recebido: {clienteAtualizado.Id}");
-System.Diagnostics.Debug.WriteLine($"CPF recebido: {clienteAtualizado.Cpf}");
-System.Diagnostics.Debug.WriteLine($"CPF duplicado: {cpfExiste}");
             if (cpfExiste) {
                 erros.Add(new ValidationResult("CPF já cadastrado!"));
                 return false;
@@ -153,6 +150,15 @@ System.Diagnostics.Debug.WriteLine($"CPF duplicado: {cpfExiste}");
             contexto.SaveChanges();//Salva as alterações no banco
             return true;
             
+        }
+
+        public List<Cliente> ConsultarPagina(int pagina, int registrosPorPagina) {
+            return contexto.Clientes
+                .OrderBy(c => c.Nome)
+                .ThenBy(c => c.Id)
+                .Skip((pagina - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
+                .ToList();
         }
     }
 }
