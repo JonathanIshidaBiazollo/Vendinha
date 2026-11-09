@@ -31,7 +31,7 @@ namespace Vendinha.Desktop {
 
             CarregarClientes(clientes);
 
-            lblPágina.Text = paginaAtual.ToString();
+            lblPágina.Text = $"Página {paginaAtual} de {Math.Max(1, totalDePaginas)}";
 
         }
         private void CarregarClientes(List<Cliente> lista) {
@@ -145,7 +145,6 @@ namespace Vendinha.Desktop {
 
         private void TelaClientes_Shown(object sender, EventArgs e) {
             dgvClientes.ClearSelection();//Pra que o dgv não selecione automaticamente a primeira linha da tabela
-            lblPágina.Text = paginaAtual.ToString();
         }
 
         private void btnEditar_Click(object sender, EventArgs e) {
@@ -185,7 +184,6 @@ namespace Vendinha.Desktop {
         private void btnAnterior_Click(object sender, EventArgs e) {
             if(paginaAtual > 1) {
                 paginaAtual--;
-                lblPágina.Text = paginaAtual.ToString();
                 CarregarDados();
             }
             
