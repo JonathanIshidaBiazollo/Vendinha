@@ -33,15 +33,15 @@
 //    }
 //}
 
-using Vendinha.Services;
+//using Vendinha.Services;
 
-var servico = new ClienteService();
+//var servico = new ClienteService();
 
-Console.Write("Digite o nome para pesquisar: ");
-string pesquisa = Console.ReadLine() ?? "";
+//Console.Write("Digite o nome para pesquisar: ");
+//string pesquisa = Console.ReadLine() ?? "";
 
-var clientes = servico.Consultar(pesquisa);
+//var clientes = servico.Consultar(pesquisa);
 
-foreach (var cliente in clientes) {
-    Console.WriteLine($"{cliente.Id} - {cliente.Nome}");
-}
+//foreach (var cliente in clientes) {
+//    Console.WriteLine($"{cliente.Id} - {cliente.Nome}");
+//}

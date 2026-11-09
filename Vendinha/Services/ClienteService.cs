@@ -60,11 +60,15 @@ namespace Vendinha.Services {
         }
 
         //Lista SOMENTE os clientes que atendem as ESPECIFICAÇÕES do FILTRO
-        public List<Cliente> Consultar(string pesquisa) {
+        public List<Cliente> Consultar(string pesquisa, int pagina, int registrosPorPagina) {
             var resultado  = contexto.Clientes
                 .Where(c => EF.Functions.ILike(c.Nome, $"%{pesquisa}%"))
                 .OrderBy(c => c.Nome)
+                .ThenBy(c => c.Id)//Caso 2 clientes tenham o mesmo nome ele ordena pelo id
+                .Skip((pagina - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
                 .ToList();
+
 
             return resultado;
         }
@@ -152,17 +156,14 @@ namespace Vendinha.Services {
             
         }
 
-        public List<Cliente> ConsultarPagina(int pagina, int registrosPorPagina) {
-            return contexto.Clientes
-                .OrderBy(c => c.Nome)
-                .ThenBy(c => c.Id)
-                .Skip((pagina - 1) * registrosPorPagina)
-                .Take(registrosPorPagina)
-                .ToList();
-        }
-
         public int contarClientes() {
             return contexto.Clientes.Count();
+        }
+
+        public int contarClientes(string pesquisa) {
+            var resultado  = contexto.Clientes
+                .Where(c => EF.Functions.ILike(c.Nome, $"%{pesquisa}%"));
+            return resultado.Count();
         }
     }
 }

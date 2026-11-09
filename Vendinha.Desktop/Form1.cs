@@ -19,14 +19,18 @@ namespace Vendinha.Desktop {
         }
 
         private void CarregarDados() {
-            var totalDePaginas = (int)Math.Ceiling(servico.contarClientes() / 10.0);
+            string pesquisa  = txtPesquisar.Text;
+
+            var totalDePaginas = (int)Math.Ceiling(servico.contarClientes(pesquisa) / (double)registrosPorPagina);
 
             if(paginaAtual > totalDePaginas) { //Caso eu apague o último cliente listado em uma página, para que ela não fique vazia, eu atualizo a tabela
                 paginaAtual = Math.Max(1, totalDePaginas);//página atual vai ser a última, mas nunca menor que 1, para não dar erro de ir para a página 0 que não existe e dar erro no sistema
             }
 
-            var clientes = servico.ConsultarPagina(paginaAtual, registrosPorPagina);
+            var clientes = servico.Consultar(pesquisa, paginaAtual, registrosPorPagina);
+
             CarregarClientes(clientes);
+
             lblPágina.Text = paginaAtual.ToString();
 
         }
@@ -106,9 +110,8 @@ namespace Vendinha.Desktop {
 
 
         private void txtPesquisar_TextChanged(object sender, EventArgs e) {
-            var resultado = servico.Consultar(txtPesquisar.Text);
-
-            CarregarClientes(resultado);
+            paginaAtual = 1;
+            CarregarDados();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e) {
@@ -171,10 +174,9 @@ namespace Vendinha.Desktop {
         }
 
         private void btnProximo_Click(object sender, EventArgs e) {
-            var totalDePaginas = (int)Math.Ceiling(servico.contarClientes() / 10.0);
+            var totalDePaginas = (int)Math.Ceiling(servico.contarClientes(txtPesquisar.Text) / (double)registrosPorPagina);
             if(paginaAtual <  totalDePaginas) {
                 paginaAtual++;
-                lblPágina.Text = paginaAtual.ToString();
                 CarregarDados();
             }
             
