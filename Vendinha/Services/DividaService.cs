@@ -69,5 +69,33 @@ namespace Vendinha.Services {
 
             return true;
         }
+
+        public List<Divida> Consultar(int clienteId) {
+            var dividas = contexto.Dividas
+                .Where(d => d.ClienteId == clienteId)
+                .OrderByDescending(d => d.DataCriacao)
+                .ThenByDescending(d => d.Id)
+                .ToList();
+
+            return dividas;
+        }
+
+        public bool Quitar(int dividaId) {
+            var divida = contexto.Dividas
+                .FirstOrDefault(d => d.Id == dividaId);
+
+            if(divida == null) {
+                return false;
+            }
+            if(divida.Paga) { 
+                return false;
+            }
+
+            divida.Paga = true;
+            divida.DataPagamento = DateTime.Today;
+
+            contexto.SaveChanges();
+            return true;
+        }
     }
 }

@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Componentes\" />
-    <Folder Include="Screen\" />
   </ItemGroup>
 
   <ItemGroup>
