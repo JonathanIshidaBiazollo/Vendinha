@@ -29,7 +29,7 @@
             cmbClientes = new ComboBox();
             lblClientes = new Label();
             lblValor = new Label();
-            textBox1 = new TextBox();
+            txtValor = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvDividas).BeginInit();
             SuspendLayout();
             // 
@@ -41,6 +41,7 @@
             btnCadastrar.TabIndex = 0;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // btnQuitar
             // 
@@ -96,19 +97,19 @@
             lblValor.TabIndex = 5;
             lblValor.Text = "Valor";
             // 
-            // textBox1
+            // txtValor
             // 
-            textBox1.Location = new Point(24, 157);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 6;
+            txtValor.Location = new Point(24, 157);
+            txtValor.Name = "txtValor";
+            txtValor.Size = new Size(125, 27);
+            txtValor.TabIndex = 6;
             // 
             // TelaDividas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox1);
+            Controls.Add(txtValor);
             Controls.Add(lblValor);
             Controls.Add(lblClientes);
             Controls.Add(cmbClientes);
@@ -116,6 +117,7 @@
             Controls.Add(btnQuitar);
             Controls.Add(btnCadastrar);
             Name = "TelaDividas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TelaDividas";
             ((System.ComponentModel.ISupportInitialize)dgvDividas).EndInit();
             ResumeLayout(false);
@@ -130,6 +132,6 @@
         private ComboBox cmbClientes;
         private Label lblClientes;
         private Label lblValor;
-        private TextBox textBox1;
+        private TextBox txtValor;
     }
 }
