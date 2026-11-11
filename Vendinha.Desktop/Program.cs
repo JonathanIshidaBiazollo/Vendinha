@@ -1,3 +1,5 @@
+using Vendinha.Desktop.Screen;
+
 namespace Vendinha.Desktop {
     internal static class Program {
         /// <summary>
@@ -8,7 +10,7 @@ namespace Vendinha.Desktop {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new TelaClientes());
+            Application.Run(new TelaDividas());
         }
     }
 }
