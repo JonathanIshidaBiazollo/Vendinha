@@ -34,11 +34,6 @@
             mskCpf = new MaskedTextBox();
             btnCadastrar = new Button();
             dgvClientes = new DataGridView();
-            colId = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            ColCpf = new DataGridViewTextBoxColumn();
-            colDataNascimento = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
             btnExcluir = new Button();
@@ -47,6 +42,13 @@
             btnAnterior = new Button();
             btnProximo = new Button();
             lblPágina = new Label();
+            colId = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            ColCpf = new DataGridViewTextBoxColumn();
+            colDataNascimento = new DataGridViewTextBoxColumn();
+            colIdade = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
+            colTotalDevido = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -135,7 +137,7 @@
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, ColCpf, colDataNascimento, colEmail });
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, ColCpf, colDataNascimento, colIdade, colEmail, colTotalDevido });
             dgvClientes.Location = new Point(350, 65);
             dgvClientes.MultiSelect = false;
             dgvClientes.Name = "dgvClientes";
@@ -144,44 +146,6 @@
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(936, 343);
             dgvClientes.TabIndex = 10;
-            // 
-            // colId
-            // 
-            colId.DataPropertyName = "Id";
-            colId.HeaderText = "ID";
-            colId.MinimumWidth = 6;
-            colId.Name = "colId";
-            colId.ReadOnly = true;
-            // 
-            // colNome
-            // 
-            colNome.HeaderText = "Nome";
-            colNome.MinimumWidth = 6;
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
-            // 
-            // ColCpf
-            // 
-            ColCpf.HeaderText = "C.P.F.";
-            ColCpf.MinimumWidth = 6;
-            ColCpf.Name = "ColCpf";
-            ColCpf.ReadOnly = true;
-            // 
-            // colDataNascimento
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
-            colDataNascimento.HeaderText = "Data de Nascimento";
-            colDataNascimento.MinimumWidth = 6;
-            colDataNascimento.Name = "colDataNascimento";
-            colDataNascimento.ReadOnly = true;
-            // 
-            // colEmail
-            // 
-            colEmail.HeaderText = "Email";
-            colEmail.MinimumWidth = 6;
-            colEmail.Name = "colEmail";
-            colEmail.ReadOnly = true;
             // 
             // txtPesquisar
             // 
@@ -260,6 +224,58 @@
             lblPágina.TabIndex = 17;
             lblPágina.Text = "Página Atual";
             // 
+            // colId
+            // 
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.MinimumWidth = 6;
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.MinimumWidth = 6;
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // ColCpf
+            // 
+            ColCpf.HeaderText = "C.P.F.";
+            ColCpf.MinimumWidth = 6;
+            ColCpf.Name = "ColCpf";
+            ColCpf.ReadOnly = true;
+            // 
+            // colDataNascimento
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
+            colDataNascimento.HeaderText = "Data de Nascimento";
+            colDataNascimento.MinimumWidth = 6;
+            colDataNascimento.Name = "colDataNascimento";
+            colDataNascimento.ReadOnly = true;
+            // 
+            // colIdade
+            // 
+            colIdade.HeaderText = "Idade";
+            colIdade.MinimumWidth = 6;
+            colIdade.Name = "colIdade";
+            colIdade.ReadOnly = true;
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "Email";
+            colEmail.MinimumWidth = 6;
+            colEmail.Name = "colEmail";
+            colEmail.ReadOnly = true;
+            // 
+            // colTotalDevido
+            // 
+            colTotalDevido.HeaderText = "Total Devido";
+            colTotalDevido.MinimumWidth = 6;
+            colTotalDevido.Name = "colTotalDevido";
+            colTotalDevido.ReadOnly = true;
+            // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -308,11 +324,6 @@
         private MaskedTextBox mskCpf;
         private Button btnCadastrar;
         private DataGridView dgvClientes;
-        private DataGridViewTextBoxColumn colId;
-        private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn ColCpf;
-        private DataGridViewTextBoxColumn colDataNascimento;
-        private DataGridViewTextBoxColumn colEmail;
         private TextBox txtPesquisar;
         private Label lblPesquisar;
         private Button btnExcluir;
@@ -321,5 +332,12 @@
         private Button btnAnterior;
         private Button btnProximo;
         private Label lblPágina;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn ColCpf;
+        private DataGridViewTextBoxColumn colDataNascimento;
+        private DataGridViewTextBoxColumn colIdade;
+        private DataGridViewTextBoxColumn colEmail;
+        private DataGridViewTextBoxColumn colTotalDevido;
     }
 }

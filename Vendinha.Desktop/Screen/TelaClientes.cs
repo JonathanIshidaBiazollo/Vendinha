@@ -38,12 +38,18 @@ namespace Vendinha.Desktop {
             dgvClientes.Rows.Clear();
 
             foreach (var cliente in lista) {
+                decimal totalDevido = cliente.Dividas
+                    .Where(d => d.Paga == false)
+                    .Sum(d => d.Valor);
+
                 dgvClientes.Rows.Add(
                     cliente.Id,
                     cliente.Nome,
                     cliente.Cpf,
                     cliente.DataNascimento.ToString("dd/MM/yyyy"),
-                    cliente.Email
+                    cliente.Idade,
+                    cliente.Email,
+                    totalDevido.ToString("C2")
                 );
             }
 

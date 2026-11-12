@@ -62,8 +62,14 @@ namespace Vendinha.Services {
         //Lista SOMENTE os clientes que atendem as ESPECIFICAÇÕES do FILTRO
         public List<Cliente> Consultar(string pesquisa, int pagina, int registrosPorPagina) {
             var resultado  = contexto.Clientes
+                .Include(c => c.Dividas)
                 .Where(c => EF.Functions.ILike(c.Nome, $"%{pesquisa}%"))
-                .OrderBy(c => c.Nome)
+                .OrderByDescending(
+                    c => c.Dividas
+                    .Where(d => d.Paga == false)
+                    .Sum(d => d.Valor)
+                )
+                .ThenBy(c => c.Nome)
                 .ThenBy(c => c.Id)//Caso 2 clientes tenham o mesmo nome ele ordena pelo id
                 .Skip((pagina - 1) * registrosPorPagina)
                 .Take(registrosPorPagina)
