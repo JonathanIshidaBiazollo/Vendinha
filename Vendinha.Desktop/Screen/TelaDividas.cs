@@ -54,10 +54,10 @@ namespace Vendinha.Desktop.Screen {
                 dgvDividas.Rows.Add(
                     divida.Id,
                     divida.Cliente.Nome,
-                    divida.Valor,
+                    divida.Valor.ToString("C2"),//Para alterar a formatação para a moeda corrente do sistema
                     divida.Paga ? "Paga" : "Não Paga",
-                    divida.DataCriacao,
-                    divida.DataPagamento
+                    divida.DataCriacao.ToString("dd/MM/yyyy"),
+                    divida.DataPagamento?.ToString("dd/MM/yyyy") ?? "-"
                 );
             }
         }
