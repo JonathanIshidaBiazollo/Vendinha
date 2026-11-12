@@ -26,6 +26,11 @@
             btnCadastrar = new Button();
             btnQuitar = new Button();
             dgvDividas = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colValor = new DataGridViewTextBoxColumn();
+            colSituacao = new DataGridViewTextBoxColumn();
+            colDataCriacao = new DataGridViewTextBoxColumn();
+            colDataPagamento = new DataGridViewTextBoxColumn();
             cmbClientes = new ComboBox();
             lblClientes = new Label();
             lblValor = new Label();
@@ -58,15 +63,52 @@
             dgvDividas.AllowUserToDeleteRows = false;
             dgvDividas.AllowUserToResizeColumns = false;
             dgvDividas.AllowUserToResizeRows = false;
+            dgvDividas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDividas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDividas.Location = new Point(470, 46);
+            dgvDividas.Columns.AddRange(new DataGridViewColumn[] { colId, colValor, colSituacao, colDataCriacao, colDataPagamento });
+            dgvDividas.Location = new Point(331, 21);
             dgvDividas.MultiSelect = false;
             dgvDividas.Name = "dgvDividas";
             dgvDividas.ReadOnly = true;
             dgvDividas.RowHeadersWidth = 51;
             dgvDividas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDividas.Size = new Size(300, 188);
+            dgvDividas.Size = new Size(678, 325);
             dgvDividas.TabIndex = 2;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "ID";
+            colId.MinimumWidth = 6;
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            // 
+            // colValor
+            // 
+            colValor.HeaderText = "Valor";
+            colValor.MinimumWidth = 6;
+            colValor.Name = "colValor";
+            colValor.ReadOnly = true;
+            // 
+            // colSituacao
+            // 
+            colSituacao.HeaderText = "Situação";
+            colSituacao.MinimumWidth = 6;
+            colSituacao.Name = "colSituacao";
+            colSituacao.ReadOnly = true;
+            // 
+            // colDataCriacao
+            // 
+            colDataCriacao.HeaderText = "Data de criação";
+            colDataCriacao.MinimumWidth = 6;
+            colDataCriacao.Name = "colDataCriacao";
+            colDataCriacao.ReadOnly = true;
+            // 
+            // colDataPagamento
+            // 
+            colDataPagamento.HeaderText = "Data de pagamento";
+            colDataPagamento.MinimumWidth = 6;
+            colDataPagamento.Name = "colDataPagamento";
+            colDataPagamento.ReadOnly = true;
             // 
             // cmbClientes
             // 
@@ -78,6 +120,7 @@
             cmbClientes.Size = new Size(151, 28);
             cmbClientes.TabIndex = 3;
             cmbClientes.ValueMember = "Id";
+            cmbClientes.SelectedIndexChanged += cmbClientes_SelectedIndexChanged;
             // 
             // lblClientes
             // 
@@ -108,7 +151,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1043, 542);
             Controls.Add(txtValor);
             Controls.Add(lblValor);
             Controls.Add(lblClientes);
@@ -133,5 +176,10 @@
         private Label lblClientes;
         private Label lblValor;
         private TextBox txtValor;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewTextBoxColumn colValor;
+        private DataGridViewTextBoxColumn colSituacao;
+        private DataGridViewTextBoxColumn colDataCriacao;
+        private DataGridViewTextBoxColumn colDataPagamento;
     }
 }

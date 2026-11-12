@@ -27,21 +27,59 @@ namespace Vendinha.Desktop.Screen {
             cmbClientes.DataSource = clientes;
         }
 
+        private void CarregarDividas() {
+            dgvDividas.Rows.Clear();
+            if (cmbClientes.SelectedValue == null) {
+                return;
+            }
+
+            int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
+
+            var dividas = servicoDivida.Consultar(clienteId);
+
+            foreach (var divida in dividas) {
+                dgvDividas.Rows.Add(
+                    divida.Id,
+                    divida.Valor,
+                    divida.Paga,
+                    divida.DataCriacao,
+                    divida.DataPagamento
+                );
+            }
+        }
+
         private void btnCadastrar_Click(object sender, EventArgs e) {
-            if(cmbClientes.SelectedValue == null) {
+            if (cmbClientes.SelectedValue == null) {
                 MessageBox.Show("Selecione um cliente por favor");
                 return;
             }
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
 
-            if(!decimal.TryParse(txtValor.Text, out decimal valor)){
-                MessageBox.Show("Digite um valor válido para a dívida\n" +
-                                "Ex: 10,50 ou 10.50");
+            if (!decimal.TryParse(txtValor.Text, out decimal valor)) {
+                MessageBox.Show("Digite um valor válido para a dívida");
                 return;
             }
 
-            MessageBox.Show($"{clienteId}");
+            Divida novaDivida = new Divida {
+                ClienteId = clienteId,
+                Valor = valor
+            };
+
+            bool cadastrou = servicoDivida.Criar(novaDivida, out var erros);
+
+            if (cadastrou) {
+                MessageBox.Show("Dívida Cadastrada com sucesso!");
+                txtValor.Clear();
+            } else {
+                string mensagens = string.Join("\n", erros.Select(e => e.ErrorMessage));
+
+                MessageBox.Show(mensagens);
+            }
+        }
+
+        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e) {
+            CarregarDividas();
         }
     }
 }

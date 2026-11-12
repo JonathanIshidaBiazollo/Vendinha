@@ -10,7 +10,7 @@ namespace Vendinha.Models {
         
         [Required(ErrorMessage="Preencha o campo nome")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "O nome deve possuir de 2 a 100 caracteres")]
-        [RegularExpression(@"^[a-zA-ZÀ-ÿ ]+$")]//acentos, espaços em branco, letras maiúsculas e minúsculas
+        [RegularExpression(@"^[a-zA-ZÀ-ÿ ]+$", ErrorMessage ="Nome deve possuir apenas letras")]//acentos, espaços em branco, letras maiúsculas e minúsculas
         public string Nome {  get; set; } = "";//Para parar de dar aqueles avisos de que a propriedade precisa sair como not null do construtor
 
         [Required(ErrorMessage="Preencha o campo cpf")]
