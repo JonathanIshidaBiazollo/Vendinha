@@ -42,11 +42,18 @@ namespace Vendinha.Desktop.Screen {
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
 
-            var dividas = servicoDivida.Consultar(clienteId);
+            List<Divida>dividas;
+
+            if(clienteId == 0) { 
+                dividas = servicoDivida.ConsultarTodas();
+            } else {
+                dividas = servicoDivida.Consultar(clienteId);
+            }
 
             foreach (var divida in dividas) {
                 dgvDividas.Rows.Add(
                     divida.Id,
+                    divida.Cliente.Nome,
                     divida.Valor,
                     divida.Paga ? "Paga" : "Não Paga",
                     divida.DataCriacao,
@@ -62,6 +69,12 @@ namespace Vendinha.Desktop.Screen {
             }
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
+
+            if(clienteId == 0) { 
+                MessageBox.Show("Selecione um cliente para cadastar a dívida");
+                return;
+            }
+            
 
             if (!decimal.TryParse(txtValor.Text, out decimal valor)) {
                 MessageBox.Show("Digite um valor válido para a dívida");

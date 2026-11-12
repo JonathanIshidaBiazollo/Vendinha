@@ -1,4 +1,5 @@
 ﻿using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -72,6 +73,7 @@ namespace Vendinha.Services {
 
         public List<Divida> ConsultarTodas() {
             var dividas = contexto.Dividas
+                .Include(d => d.Cliente)
                 .OrderByDescending(d => d.DataCriacao)
                 .ThenByDescending(d => d.Id)
                 .ToList();
