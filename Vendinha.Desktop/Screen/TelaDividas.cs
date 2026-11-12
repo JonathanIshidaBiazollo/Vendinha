@@ -12,6 +12,8 @@ namespace Vendinha.Desktop.Screen {
     public partial class TelaDividas : Form {
         private ClienteService servicoClientes;
         private DividaService servicoDivida;
+        private int paginaAtual = 1;
+        private int registrosPorPagina = 10;
         public TelaDividas() {
             InitializeComponent();
 
@@ -37,19 +39,20 @@ namespace Vendinha.Desktop.Screen {
 
         private void CarregarDividas() {
             dgvDividas.Rows.Clear();
+
             if (cmbClientes.SelectedValue == null) {
                 return;
             }
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
 
-            List<Divida> dividas;
+            int totalDePaginas = (int)Math.Ceiling(servicoDivida.ContarDividas(clienteId) / (double)registrosPorPagina);
 
-            if (clienteId == 0) {
-                dividas = servicoDivida.ConsultarTodas();
-            } else {
-                dividas = servicoDivida.Consultar(clienteId);
+            if (paginaAtual > totalDePaginas) {
+                paginaAtual = Math.Max(1, totalDePaginas);
             }
+
+            var dividas = servicoDivida.Consultar(clienteId, paginaAtual, registrosPorPagina);
 
             foreach (var divida in dividas) {
                 dgvDividas.Rows.Add(
@@ -61,6 +64,8 @@ namespace Vendinha.Desktop.Screen {
                     divida.DataPagamento?.ToString("dd/MM/yyyy") ?? "-"
                 );
             }
+
+            lblPagina.Text = $"Página {paginaAtual} de {Math.Max(1, totalDePaginas)}";
 
             dgvDividas.ClearSelection();
         }
@@ -103,6 +108,7 @@ namespace Vendinha.Desktop.Screen {
         }
 
         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e) {
+            paginaAtual = 1;
             CarregarDividas();
         }
 
@@ -113,7 +119,7 @@ namespace Vendinha.Desktop.Screen {
             }
 
             int dividaId = Convert.ToInt32(dgvDividas.SelectedRows[0].Cells["colId"].Value);
-           
+
 
             DialogResult resposta = MessageBox.Show(
                     "Deseja Realmente quitar essa dívida?",
@@ -122,7 +128,7 @@ namespace Vendinha.Desktop.Screen {
                     MessageBoxIcon.Question
             );
 
-            if(resposta == DialogResult.No ) {
+            if (resposta == DialogResult.No) {
                 return;
             }
 
@@ -139,6 +145,28 @@ namespace Vendinha.Desktop.Screen {
 
         private void TelaDividas_Shown(object sender, EventArgs e) {
             dgvDividas.ClearSelection();
+        }
+
+        private void btnProximo_Click(object sender, EventArgs e) {
+            if (cmbClientes.SelectedValue == null) {
+                return;
+            }
+
+            int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
+
+            int totalDePaginas = (int)Math.Ceiling(servicoDivida.ContarDividas(clienteId) / (double)registrosPorPagina);
+
+            if (paginaAtual < totalDePaginas) {
+                paginaAtual++;
+                CarregarDividas();
+            }
+        }
+
+        private void lblAnterior_Click(object sender, EventArgs e) {
+            if(paginaAtual > 1) {
+                paginaAtual--;
+                CarregarDividas();
+            }
         }
     }
 }

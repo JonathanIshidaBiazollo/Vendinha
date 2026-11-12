@@ -90,6 +90,24 @@ namespace Vendinha.Services {
             return dividas;
         }
 
+        public List<Divida> Consultar(int clienteId, int pagina, int registrosPorPagina) {
+            return contexto.Dividas
+                .Include(d => d.Cliente)
+                .Where(d => clienteId == 0 || d.ClienteId == clienteId)
+                .OrderBy(d => d.Paga)
+                .ThenByDescending(d => d.Valor)
+                .ThenByDescending(d => d.DataCriacao)
+                .ThenByDescending(d => d.Id)
+                .Skip((pagina - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
+                .ToList();
+        }
+
+        public int ContarDividas(int clienteId) {
+            return contexto.Dividas
+                .Where(d => clienteId == 0 || d.ClienteId == clienteId)
+                .Count();
+        }
         public bool Quitar(int dividaId) {
             var divida = contexto.Dividas
                 .FirstOrDefault(d => d.Id == dividaId);

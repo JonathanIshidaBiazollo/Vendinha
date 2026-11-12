@@ -36,6 +36,9 @@
             lblClientes = new Label();
             lblValor = new Label();
             txtValor = new TextBox();
+            lblAnterior = new Button();
+            btnProximo = new Button();
+            lblPagina = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvDividas).BeginInit();
             SuspendLayout();
             // 
@@ -74,7 +77,7 @@
             dgvDividas.ReadOnly = true;
             dgvDividas.RowHeadersWidth = 51;
             dgvDividas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDividas.Size = new Size(678, 325);
+            dgvDividas.Size = new Size(678, 362);
             dgvDividas.TabIndex = 2;
             // 
             // colId
@@ -156,11 +159,43 @@
             txtValor.Size = new Size(125, 27);
             txtValor.TabIndex = 6;
             // 
+            // lblAnterior
+            // 
+            lblAnterior.Location = new Point(399, 420);
+            lblAnterior.Name = "lblAnterior";
+            lblAnterior.Size = new Size(94, 29);
+            lblAnterior.TabIndex = 7;
+            lblAnterior.Text = "Anterior";
+            lblAnterior.UseVisualStyleBackColor = true;
+            lblAnterior.Click += lblAnterior_Click;
+            // 
+            // btnProximo
+            // 
+            btnProximo.Location = new Point(704, 420);
+            btnProximo.Name = "btnProximo";
+            btnProximo.Size = new Size(94, 29);
+            btnProximo.TabIndex = 8;
+            btnProximo.Text = "Próximo";
+            btnProximo.UseVisualStyleBackColor = true;
+            btnProximo.Click += btnProximo_Click;
+            // 
+            // lblPagina
+            // 
+            lblPagina.AutoSize = true;
+            lblPagina.Location = new Point(543, 429);
+            lblPagina.Name = "lblPagina";
+            lblPagina.Size = new Size(98, 20);
+            lblPagina.TabIndex = 9;
+            lblPagina.Text = "Página 1 de 1";
+            // 
             // TelaDividas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1236, 542);
+            Controls.Add(lblPagina);
+            Controls.Add(btnProximo);
+            Controls.Add(lblAnterior);
             Controls.Add(txtValor);
             Controls.Add(lblValor);
             Controls.Add(lblClientes);
@@ -192,5 +227,8 @@
         private DataGridViewTextBoxColumn colSituacao;
         private DataGridViewTextBoxColumn colDataCriacao;
         private DataGridViewTextBoxColumn colDataPagamento;
+        private Button lblAnterior;
+        private Button btnProximo;
+        private Label lblPagina;
     }
 }
