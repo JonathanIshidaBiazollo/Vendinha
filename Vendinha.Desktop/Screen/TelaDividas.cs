@@ -19,6 +19,7 @@ namespace Vendinha.Desktop.Screen {
             servicoDivida = new DividaService();
 
             CarregarClientes();
+
         }
 
         private void CarregarClientes() {
@@ -42,9 +43,9 @@ namespace Vendinha.Desktop.Screen {
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
 
-            List<Divida>dividas;
+            List<Divida> dividas;
 
-            if(clienteId == 0) { 
+            if (clienteId == 0) {
                 dividas = servicoDivida.ConsultarTodas();
             } else {
                 dividas = servicoDivida.Consultar(clienteId);
@@ -60,6 +61,8 @@ namespace Vendinha.Desktop.Screen {
                     divida.DataPagamento?.ToString("dd/MM/yyyy") ?? "-"
                 );
             }
+
+            dgvDividas.ClearSelection();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e) {
@@ -70,11 +73,11 @@ namespace Vendinha.Desktop.Screen {
 
             int clienteId = Convert.ToInt32(cmbClientes.SelectedValue);
 
-            if(clienteId == 0) { 
+            if (clienteId == 0) {
                 MessageBox.Show("Selecione um cliente para cadastar a dívida");
                 return;
             }
-            
+
 
             if (!decimal.TryParse(txtValor.Text, out decimal valor)) {
                 MessageBox.Show("Digite um valor válido para a dívida");
@@ -91,6 +94,7 @@ namespace Vendinha.Desktop.Screen {
             if (cadastrou) {
                 MessageBox.Show("Dívida Cadastrada com sucesso!");
                 txtValor.Clear();
+                CarregarDividas();
             } else {
                 string mensagens = string.Join("\n", erros.Select(e => e.ErrorMessage));
 
@@ -100,6 +104,41 @@ namespace Vendinha.Desktop.Screen {
 
         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e) {
             CarregarDividas();
+        }
+
+        private void btnQuitar_Click(object sender, EventArgs e) {
+            if (dgvDividas.SelectedRows.Count == 0) {
+                MessageBox.Show("Selecione uma dívida para quitar.");
+                return;
+            }
+
+            int dividaId = Convert.ToInt32(dgvDividas.SelectedRows[0].Cells["colId"].Value);
+           
+
+            DialogResult resposta = MessageBox.Show(
+                    "Deseja Realmente quitar essa dívida?",
+                    "Confirmar pagamento",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+            );
+
+            if(resposta == DialogResult.No ) {
+                return;
+            }
+
+            bool quitou = servicoDivida.Quitar(dividaId);
+
+
+            if (quitou) {
+                MessageBox.Show("dívida quitada com sucesso");
+                CarregarDividas();
+            } else {
+                MessageBox.Show("Não foi possível quitar a dívida, ela já está paga");
+            }
+        }
+
+        private void TelaDividas_Shown(object sender, EventArgs e) {
+            dgvDividas.ClearSelection();
         }
     }
 }

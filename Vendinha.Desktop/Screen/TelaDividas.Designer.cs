@@ -26,16 +26,16 @@
             btnCadastrar = new Button();
             btnQuitar = new Button();
             dgvDividas = new DataGridView();
-            cmbClientes = new ComboBox();
-            lblClientes = new Label();
-            lblValor = new Label();
-            txtValor = new TextBox();
             colId = new DataGridViewTextBoxColumn();
             colCliente = new DataGridViewTextBoxColumn();
             colValor = new DataGridViewTextBoxColumn();
             colSituacao = new DataGridViewTextBoxColumn();
             colDataCriacao = new DataGridViewTextBoxColumn();
             colDataPagamento = new DataGridViewTextBoxColumn();
+            cmbClientes = new ComboBox();
+            lblClientes = new Label();
+            lblValor = new Label();
+            txtValor = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvDividas).BeginInit();
             SuspendLayout();
             // 
@@ -57,6 +57,7 @@
             btnQuitar.TabIndex = 1;
             btnQuitar.Text = "Quitar\r\nDívida";
             btnQuitar.UseVisualStyleBackColor = true;
+            btnQuitar.Click += btnQuitar_Click;
             // 
             // dgvDividas
             // 
@@ -75,43 +76,6 @@
             dgvDividas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDividas.Size = new Size(678, 325);
             dgvDividas.TabIndex = 2;
-            // 
-            // cmbClientes
-            // 
-            cmbClientes.DisplayMember = "Nome";
-            cmbClientes.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbClientes.FormattingEnabled = true;
-            cmbClientes.Location = new Point(21, 59);
-            cmbClientes.Name = "cmbClientes";
-            cmbClientes.Size = new Size(151, 28);
-            cmbClientes.TabIndex = 3;
-            cmbClientes.ValueMember = "Id";
-            cmbClientes.SelectedIndexChanged += cmbClientes_SelectedIndexChanged;
-            // 
-            // lblClientes
-            // 
-            lblClientes.AutoSize = true;
-            lblClientes.Location = new Point(21, 21);
-            lblClientes.Name = "lblClientes";
-            lblClientes.Size = new Size(61, 20);
-            lblClientes.TabIndex = 4;
-            lblClientes.Text = "Clientes";
-            // 
-            // lblValor
-            // 
-            lblValor.AutoSize = true;
-            lblValor.Location = new Point(21, 120);
-            lblValor.Name = "lblValor";
-            lblValor.Size = new Size(43, 20);
-            lblValor.TabIndex = 5;
-            lblValor.Text = "Valor";
-            // 
-            // txtValor
-            // 
-            txtValor.Location = new Point(24, 157);
-            txtValor.Name = "txtValor";
-            txtValor.Size = new Size(125, 27);
-            txtValor.TabIndex = 6;
             // 
             // colId
             // 
@@ -155,6 +119,43 @@
             colDataPagamento.Name = "colDataPagamento";
             colDataPagamento.ReadOnly = true;
             // 
+            // cmbClientes
+            // 
+            cmbClientes.DisplayMember = "Nome";
+            cmbClientes.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbClientes.FormattingEnabled = true;
+            cmbClientes.Location = new Point(21, 59);
+            cmbClientes.Name = "cmbClientes";
+            cmbClientes.Size = new Size(151, 28);
+            cmbClientes.TabIndex = 3;
+            cmbClientes.ValueMember = "Id";
+            cmbClientes.SelectedIndexChanged += cmbClientes_SelectedIndexChanged;
+            // 
+            // lblClientes
+            // 
+            lblClientes.AutoSize = true;
+            lblClientes.Location = new Point(21, 21);
+            lblClientes.Name = "lblClientes";
+            lblClientes.Size = new Size(61, 20);
+            lblClientes.TabIndex = 4;
+            lblClientes.Text = "Clientes";
+            // 
+            // lblValor
+            // 
+            lblValor.AutoSize = true;
+            lblValor.Location = new Point(21, 120);
+            lblValor.Name = "lblValor";
+            lblValor.Size = new Size(43, 20);
+            lblValor.TabIndex = 5;
+            lblValor.Text = "Valor";
+            // 
+            // txtValor
+            // 
+            txtValor.Location = new Point(24, 157);
+            txtValor.Name = "txtValor";
+            txtValor.Size = new Size(125, 27);
+            txtValor.TabIndex = 6;
+            // 
             // TelaDividas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -170,6 +171,7 @@
             Name = "TelaDividas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TelaDividas";
+            Shown += TelaDividas_Shown;
             ((System.ComponentModel.ISupportInitialize)dgvDividas).EndInit();
             ResumeLayout(false);
             PerformLayout();
