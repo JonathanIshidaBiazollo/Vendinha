@@ -24,6 +24,11 @@ namespace Vendinha.Desktop.Screen {
         private void CarregarClientes() {
             var clientes = servicoClientes.Consultar();
 
+            clientes.Insert(0, new Cliente {
+                Id = 0,
+                Nome = "Todos os clientes"
+            });
+
             cmbClientes.DataSource = clientes;
         }
 
@@ -41,7 +46,7 @@ namespace Vendinha.Desktop.Screen {
                 dgvDividas.Rows.Add(
                     divida.Id,
                     divida.Valor,
-                    divida.Paga,
+                    divida.Paga ? "Paga" : "Não Paga",
                     divida.DataCriacao,
                     divida.DataPagamento
                 );
