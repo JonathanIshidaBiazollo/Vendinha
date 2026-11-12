@@ -30,6 +30,8 @@ namespace Vendinha.Desktop.Screen {
             });
 
             cmbClientes.DataSource = clientes;
+            cmbClientes.DisplayMember = "Nome";
+            cmbClientes.ValueMember = "Id";
         }
 
         private void CarregarDividas() {

@@ -70,6 +70,14 @@ namespace Vendinha.Services {
             return true;
         }
 
+        public List<Divida> ConsultarTodas() {
+            var dividas = contexto.Dividas
+                .OrderByDescending(d => d.DataCriacao)
+                .ThenByDescending(d => d.Id)
+                .ToList();
+
+            return dividas;
+        }
         public List<Divida> Consultar(int clienteId) {
             var dividas = contexto.Dividas
                 .Where(d => d.ClienteId == clienteId)
