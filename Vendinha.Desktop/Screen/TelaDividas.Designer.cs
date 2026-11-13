@@ -244,7 +244,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = SystemColors.ButtonFace;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(1097, 534);
             Controls.Add(btnVoltar);
@@ -262,7 +262,6 @@
             Controls.Add(btnQuitar);
             Controls.Add(btnCadastrar);
             DoubleBuffered = true;
-            ForeColor = SystemColors.ControlLight;
             Name = "TelaDividas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TelaDividas";
