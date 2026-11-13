@@ -19,11 +19,11 @@ namespace Vendinha.Desktop {
         }
 
         private void CarregarDados() {
-            string pesquisa  = txtPesquisar.Text;
+            string pesquisa = txtPesquisar.Text;
 
             var totalDePaginas = (int)Math.Ceiling(servico.contarClientes(pesquisa) / (double)registrosPorPagina);
 
-            if(paginaAtual > totalDePaginas) { //Caso eu apague o último cliente listado em uma página, para que ela não fique vazia, eu atualizo a tabela
+            if (paginaAtual > totalDePaginas) { //Caso eu apague o último cliente listado em uma página, para que ela não fique vazia, eu atualizo a tabela
                 paginaAtual = Math.Max(1, totalDePaginas);//página atual vai ser a última, mas nunca menor que 1, para não dar erro de ir para a página 0 que não existe e dar erro no sistema
             }
 
@@ -38,6 +38,10 @@ namespace Vendinha.Desktop {
             dgvClientes.Rows.Clear();
 
             foreach (var cliente in lista) {
+                decimal totalPago = cliente.Dividas
+                    .Where(d => d.Paga == true)
+                    .Sum(d => d.Valor);
+
                 decimal totalDevido = cliente.Dividas
                     .Where(d => d.Paga == false)
                     .Sum(d => d.Valor);
@@ -49,6 +53,7 @@ namespace Vendinha.Desktop {
                     cliente.DataNascimento.ToString("dd/MM/yyyy"),
                     cliente.Idade,
                     cliente.Email,
+                    totalPago.ToString("C2"),
                     totalDevido.ToString("C2")
                 );
             }
@@ -96,6 +101,7 @@ namespace Vendinha.Desktop {
 
                 idClienteEdicao = null;
                 btnCadastrar.Text = "Cadastrar";
+                btnCadastrar.Image = Properties.Resources.add_user__2_;
                 btnCancelarEdicao.Visible = false;
 
                 CarregarDados();
@@ -147,6 +153,7 @@ namespace Vendinha.Desktop {
                                     );
                 }
             }
+            btnCadastrar.Image = Properties.Resources.add_user__2_;
         }
 
         private void TelaClientes_Shown(object sender, EventArgs e) {
@@ -163,8 +170,9 @@ namespace Vendinha.Desktop {
             txtNome.Text = dgvClientes.SelectedRows[0].Cells[1].Value.ToString();
             mskCpf.Text = dgvClientes.SelectedRows[0].Cells[2].Value.ToString();
             dtpDataNascimento.Value = Convert.ToDateTime(dgvClientes.SelectedRows[0].Cells[3].Value);//Essa conversão diferente é por causa do formato DateTime
-            txtEmail.Text = dgvClientes.SelectedRows[0].Cells[4].Value?.ToString() ?? "";//esses ? e "" é pq como email pode ser nulo, se de fato ele for vai causar um erro
+            txtEmail.Text = dgvClientes.SelectedRows[0].Cells[5].Value?.ToString() ?? "";//esses ? e "" é pq como email pode ser nulo, se de fato ele for vai causar um erro
             btnCadastrar.Text = "Salvar Alterações";
+            btnCadastrar.Image = Properties.Resources.disk;
             btnCancelarEdicao.Visible = true;
         }
 
@@ -175,24 +183,29 @@ namespace Vendinha.Desktop {
             txtEmail.Text = "";
             dtpDataNascimento.Value = DateTime.Today;
             btnCadastrar.Text = "Cadastrar";
+            btnCadastrar.Image = Properties.Resources.add_user__2_;
             btnCancelarEdicao.Visible = false;
         }
 
         private void btnProximo_Click(object sender, EventArgs e) {
             var totalDePaginas = (int)Math.Ceiling(servico.contarClientes(txtPesquisar.Text) / (double)registrosPorPagina);
-            if(paginaAtual <  totalDePaginas) {
+            if (paginaAtual < totalDePaginas) {
                 paginaAtual++;
                 CarregarDados();
             }
-            
+
         }
 
         private void btnAnterior_Click(object sender, EventArgs e) {
-            if(paginaAtual > 1) {
+            if (paginaAtual > 1) {
                 paginaAtual--;
                 CarregarDados();
             }
-            
+
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e) {
+            this.Close();
         }
     }
 }

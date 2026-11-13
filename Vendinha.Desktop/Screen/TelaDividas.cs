@@ -179,5 +179,9 @@ namespace Vendinha.Desktop.Screen {
         private void lblClientes_Click(object sender, EventArgs e) {
 
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

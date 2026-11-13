@@ -21,5 +21,9 @@ namespace Vendinha.Desktop.Screen {
             TelaDividas tela = new TelaDividas();
             tela.ShowDialog();
         }
+
+        private void btnSair_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

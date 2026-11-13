@@ -40,7 +40,8 @@
             colDataNascimento = new DataGridViewTextBoxColumn();
             colIdade = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
-            colTotalDevido = new DataGridViewTextBoxColumn();
+            colTotalPago = new DataGridViewTextBoxColumn();
+            colDevido = new DataGridViewTextBoxColumn();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
             btnExcluir = new Button();
@@ -49,13 +50,14 @@
             btnAnterior = new Button();
             btnProximo = new Button();
             lblPágina = new Label();
+            btnVoltar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(159, 31);
+            lblNome.Location = new Point(21, 23);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(57, 20);
             lblNome.TabIndex = 0;
@@ -63,7 +65,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(159, 65);
+            txtNome.Location = new Point(133, 23);
             txtNome.MaxLength = 100;
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome e Sobrenome";
@@ -73,7 +75,7 @@
             // lblCpf
             // 
             lblCpf.AutoSize = true;
-            lblCpf.Location = new Point(159, 127);
+            lblCpf.Location = new Point(21, 82);
             lblCpf.Name = "lblCpf";
             lblCpf.Size = new Size(49, 20);
             lblCpf.TabIndex = 2;
@@ -82,24 +84,24 @@
             // lblDataNascimento
             // 
             lblDataNascimento.AutoSize = true;
-            lblDataNascimento.Location = new Point(159, 233);
+            lblDataNascimento.Location = new Point(12, 138);
             lblDataNascimento.Name = "lblDataNascimento";
-            lblDataNascimento.Size = new Size(152, 20);
+            lblDataNascimento.Size = new Size(95, 40);
             lblDataNascimento.TabIndex = 4;
-            lblDataNascimento.Text = "Data de Nascimento: ";
+            lblDataNascimento.Text = "Data de\r\nNascimento: ";
             // 
             // dtpDataNascimento
             // 
             dtpDataNascimento.Format = DateTimePickerFormat.Short;
-            dtpDataNascimento.Location = new Point(159, 281);
+            dtpDataNascimento.Location = new Point(133, 151);
             dtpDataNascimento.Name = "dtpDataNascimento";
-            dtpDataNascimento.Size = new Size(125, 27);
+            dtpDataNascimento.Size = new Size(151, 27);
             dtpDataNascimento.TabIndex = 5;
             // 
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(155, 336);
+            lblEmail.Location = new Point(12, 202);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(53, 20);
             lblEmail.TabIndex = 6;
@@ -107,29 +109,32 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(159, 381);
+            txtEmail.Location = new Point(133, 202);
             txtEmail.MaxLength = 100;
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "ex: nome@email.com";
-            txtEmail.Size = new Size(169, 27);
+            txtEmail.Size = new Size(152, 27);
             txtEmail.TabIndex = 7;
             // 
             // mskCpf
             // 
-            mskCpf.Location = new Point(159, 172);
+            mskCpf.Location = new Point(134, 75);
             mskCpf.Mask = "000.000.000-00";
             mskCpf.Name = "mskCpf";
-            mskCpf.Size = new Size(125, 27);
+            mskCpf.Size = new Size(151, 27);
             mskCpf.TabIndex = 8;
             mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(103, 455);
+            btnCadastrar.Image = Properties.Resources.add_user__2_;
+            btnCadastrar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCadastrar.Location = new Point(21, 262);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(151, 29);
+            btnCadastrar.Size = new Size(115, 63);
             btnCadastrar.TabIndex = 9;
             btnCadastrar.Text = "Cadastrar";
+            btnCadastrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
@@ -139,14 +144,14 @@
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, ColCpf, colDataNascimento, colIdade, colEmail, colTotalDevido });
-            dgvClientes.Location = new Point(350, 65);
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNome, ColCpf, colDataNascimento, colIdade, colEmail, colTotalPago, colDevido });
+            dgvClientes.Location = new Point(314, 65);
             dgvClientes.MultiSelect = false;
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowHeadersWidth = 51;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.Size = new Size(936, 343);
+            dgvClientes.Size = new Size(1125, 343);
             dgvClientes.TabIndex = 10;
             // 
             // colId
@@ -194,12 +199,19 @@
             colEmail.Name = "colEmail";
             colEmail.ReadOnly = true;
             // 
-            // colTotalDevido
+            // colTotalPago
             // 
-            colTotalDevido.HeaderText = "Total Devido";
-            colTotalDevido.MinimumWidth = 6;
-            colTotalDevido.Name = "colTotalDevido";
-            colTotalDevido.ReadOnly = true;
+            colTotalPago.HeaderText = "Total Pago";
+            colTotalPago.MinimumWidth = 6;
+            colTotalPago.Name = "colTotalPago";
+            colTotalPago.ReadOnly = true;
+            // 
+            // colDevido
+            // 
+            colDevido.HeaderText = "Total Devido";
+            colDevido.MinimumWidth = 6;
+            colDevido.Name = "colDevido";
+            colDevido.ReadOnly = true;
             // 
             // txtPesquisar
             // 
@@ -221,70 +233,90 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(1192, 428);
+            btnExcluir.Image = Properties.Resources.recycle_bin;
+            btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
+            btnExcluir.Location = new Point(159, 345);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(94, 29);
+            btnExcluir.Size = new Size(115, 63);
             btnExcluir.TabIndex = 13;
             btnExcluir.Text = "Excluir";
+            btnExcluir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(103, 502);
+            btnEditar.Image = Properties.Resources.sync;
+            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEditar.Location = new Point(21, 345);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(151, 29);
+            btnEditar.Size = new Size(115, 63);
             btnEditar.TabIndex = 0;
             btnEditar.Text = "Editar";
+            btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnCancelarEdicao
             // 
-            btnCancelarEdicao.Location = new Point(260, 455);
+            btnCancelarEdicao.Image = Properties.Resources.prohibition;
+            btnCancelarEdicao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancelarEdicao.Location = new Point(159, 262);
             btnCancelarEdicao.Name = "btnCancelarEdicao";
-            btnCancelarEdicao.Size = new Size(143, 29);
+            btnCancelarEdicao.Size = new Size(115, 63);
             btnCancelarEdicao.TabIndex = 14;
             btnCancelarEdicao.Text = "Cancelar Edição";
+            btnCancelarEdicao.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelarEdicao.UseVisualStyleBackColor = true;
             btnCancelarEdicao.Visible = false;
             btnCancelarEdicao.Click += btnCancelarEdicao_Click;
             // 
             // btnAnterior
             // 
-            btnAnterior.Location = new Point(543, 429);
+            btnAnterior.Image = Properties.Resources.arrow;
+            btnAnterior.Location = new Point(725, 422);
             btnAnterior.Name = "btnAnterior";
-            btnAnterior.Size = new Size(94, 29);
+            btnAnterior.Size = new Size(115, 63);
             btnAnterior.TabIndex = 15;
-            btnAnterior.Text = "Anterior";
             btnAnterior.UseVisualStyleBackColor = true;
             btnAnterior.Click += btnAnterior_Click;
             // 
             // btnProximo
             // 
-            btnProximo.Location = new Point(930, 428);
+            btnProximo.Image = Properties.Resources.next;
+            btnProximo.Location = new Point(950, 425);
             btnProximo.Name = "btnProximo";
-            btnProximo.Size = new Size(94, 29);
+            btnProximo.Size = new Size(115, 63);
             btnProximo.TabIndex = 16;
-            btnProximo.Text = "Próximo";
             btnProximo.UseVisualStyleBackColor = true;
             btnProximo.Click += btnProximo_Click;
             // 
             // lblPágina
             // 
             lblPágina.AutoSize = true;
-            lblPágina.Location = new Point(755, 428);
+            lblPágina.Location = new Point(846, 443);
             lblPágina.Name = "lblPágina";
-            lblPágina.Size = new Size(92, 20);
+            lblPágina.Size = new Size(98, 20);
             lblPágina.TabIndex = 17;
-            lblPágina.Text = "Página Atual";
+            lblPágina.Text = "Página 1 de 1";
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.Image = Properties.Resources.back;
+            btnVoltar.Location = new Point(21, 509);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(115, 63);
+            btnVoltar.TabIndex = 18;
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // TelaClientes
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1346, 603);
+            ClientSize = new Size(1451, 586);
+            Controls.Add(btnVoltar);
             Controls.Add(lblPágina);
             Controls.Add(btnProximo);
             Controls.Add(btnAnterior);
@@ -335,12 +367,14 @@
         private Button btnAnterior;
         private Button btnProximo;
         private Label lblPágina;
+        private Button btnVoltar;
         private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn ColCpf;
         private DataGridViewTextBoxColumn colDataNascimento;
         private DataGridViewTextBoxColumn colIdade;
         private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewTextBoxColumn colTotalDevido;
+        private DataGridViewTextBoxColumn colTotalPago;
+        private DataGridViewTextBoxColumn colDevido;
     }
 }

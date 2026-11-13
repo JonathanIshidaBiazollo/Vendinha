@@ -25,33 +25,55 @@
         private void InitializeComponent() {
             btnClientes = new Button();
             btnDividas = new Button();
+            btnSair = new Button();
             SuspendLayout();
             // 
             // btnClientes
             // 
-            btnClientes.Location = new Point(189, 150);
+            btnClientes.Image = Properties.Resources.customer_engagement;
+            btnClientes.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClientes.Location = new Point(197, 140);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(94, 29);
+            btnClientes.Size = new Size(103, 63);
             btnClientes.TabIndex = 0;
             btnClientes.Text = "Clientes";
+            btnClientes.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnClientes.UseVisualStyleBackColor = true;
             btnClientes.Click += btnClientes_Click;
             // 
             // btnDividas
             // 
-            btnDividas.Location = new Point(402, 157);
+            btnDividas.Image = Properties.Resources.debt;
+            btnDividas.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDividas.Location = new Point(356, 140);
             btnDividas.Name = "btnDividas";
-            btnDividas.Size = new Size(94, 29);
+            btnDividas.Size = new Size(99, 63);
             btnDividas.TabIndex = 1;
             btnDividas.Text = "Dívidas";
+            btnDividas.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnDividas.UseVisualStyleBackColor = true;
             btnDividas.Click += btnDividas_Click;
+            // 
+            // btnSair
+            // 
+            btnSair.Image = Properties.Resources.delete;
+            btnSair.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSair.Location = new Point(512, 140);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(94, 63);
+            btnSair.TabIndex = 2;
+            btnSair.Text = " Sair";
+            btnSair.TextAlign = ContentAlignment.MiddleRight;
+            btnSair.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
             // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 370);
+            Controls.Add(btnSair);
             Controls.Add(btnDividas);
             Controls.Add(btnClientes);
             Name = "TelaPrincipal";
@@ -64,5 +86,6 @@
 
         private Button btnClientes;
         private Button btnDividas;
+        private Button btnSair;
     }
 }
