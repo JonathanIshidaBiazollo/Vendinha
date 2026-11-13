@@ -39,12 +39,13 @@
             lblAnterior = new Button();
             btnProximo = new Button();
             lblPagina = new Label();
+            txtPesquisarCliente = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvDividas).BeginInit();
             SuspendLayout();
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(34, 229);
+            btnCadastrar.Location = new Point(12, 408);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(115, 63);
             btnCadastrar.TabIndex = 0;
@@ -54,7 +55,7 @@
             // 
             // btnQuitar
             // 
-            btnQuitar.Location = new Point(210, 229);
+            btnQuitar.Location = new Point(188, 408);
             btnQuitar.Name = "btnQuitar";
             btnQuitar.Size = new Size(115, 63);
             btnQuitar.TabIndex = 1;
@@ -127,7 +128,7 @@
             cmbClientes.DisplayMember = "Nome";
             cmbClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbClientes.FormattingEnabled = true;
-            cmbClientes.Location = new Point(21, 59);
+            cmbClientes.Location = new Point(27, 118);
             cmbClientes.Name = "cmbClientes";
             cmbClientes.Size = new Size(151, 28);
             cmbClientes.TabIndex = 3;
@@ -137,16 +138,17 @@
             // lblClientes
             // 
             lblClientes.AutoSize = true;
-            lblClientes.Location = new Point(21, 21);
+            lblClientes.Location = new Point(27, 95);
             lblClientes.Name = "lblClientes";
             lblClientes.Size = new Size(61, 20);
             lblClientes.TabIndex = 4;
             lblClientes.Text = "Clientes";
+            lblClientes.Click += lblClientes_Click;
             // 
             // lblValor
             // 
             lblValor.AutoSize = true;
-            lblValor.Location = new Point(21, 120);
+            lblValor.Location = new Point(27, 179);
             lblValor.Name = "lblValor";
             lblValor.Size = new Size(43, 20);
             lblValor.TabIndex = 5;
@@ -154,7 +156,7 @@
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(24, 157);
+            txtValor.Location = new Point(30, 216);
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(125, 27);
             txtValor.TabIndex = 6;
@@ -188,11 +190,21 @@
             lblPagina.TabIndex = 9;
             lblPagina.Text = "Página 1 de 1";
             // 
+            // txtPesquisarCliente
+            // 
+            txtPesquisarCliente.Location = new Point(27, 50);
+            txtPesquisarCliente.Name = "txtPesquisarCliente";
+            txtPesquisarCliente.PlaceholderText = "Pesquisar cliente...";
+            txtPesquisarCliente.Size = new Size(226, 27);
+            txtPesquisarCliente.TabIndex = 10;
+            txtPesquisarCliente.TextChanged += txtPesquisarCliente_TextChanged;
+            // 
             // TelaDividas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1236, 542);
+            Controls.Add(txtPesquisarCliente);
             Controls.Add(lblPagina);
             Controls.Add(btnProximo);
             Controls.Add(lblAnterior);
@@ -230,5 +242,6 @@
         private Button lblAnterior;
         private Button btnProximo;
         private Label lblPagina;
+        private TextBox txtPesquisarCliente;
     }
 }

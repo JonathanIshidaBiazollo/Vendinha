@@ -24,8 +24,11 @@ namespace Vendinha.Desktop.Screen {
 
         }
 
-        private void CarregarClientes() {
+        private void CarregarClientes(string pesquisa = "") {
             var clientes = servicoClientes.Consultar();
+            clientes = clientes
+                .Where(c => c.Nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
             clientes.Insert(0, new Cliente {
                 Id = 0,
@@ -163,10 +166,18 @@ namespace Vendinha.Desktop.Screen {
         }
 
         private void lblAnterior_Click(object sender, EventArgs e) {
-            if(paginaAtual > 1) {
+            if (paginaAtual > 1) {
                 paginaAtual--;
                 CarregarDividas();
             }
+        }
+
+        private void txtPesquisarCliente_TextChanged(object sender, EventArgs e) {
+            CarregarClientes(txtPesquisarCliente.Text);
+        }
+
+        private void lblClientes_Click(object sender, EventArgs e) {
+
         }
     }
 }
