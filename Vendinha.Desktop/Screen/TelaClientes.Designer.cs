@@ -34,6 +34,13 @@
             mskCpf = new MaskedTextBox();
             btnCadastrar = new Button();
             dgvClientes = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            ColCpf = new DataGridViewTextBoxColumn();
+            colDataNascimento = new DataGridViewTextBoxColumn();
+            colIdade = new DataGridViewTextBoxColumn();
+            colEmail = new DataGridViewTextBoxColumn();
+            colTotalDevido = new DataGridViewTextBoxColumn();
             txtPesquisar = new TextBox();
             lblPesquisar = new Label();
             btnExcluir = new Button();
@@ -42,13 +49,6 @@
             btnAnterior = new Button();
             btnProximo = new Button();
             lblPágina = new Label();
-            colId = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            ColCpf = new DataGridViewTextBoxColumn();
-            colDataNascimento = new DataGridViewTextBoxColumn();
-            colIdade = new DataGridViewTextBoxColumn();
-            colEmail = new DataGridViewTextBoxColumn();
-            colTotalDevido = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -66,7 +66,8 @@
             txtNome.Location = new Point(159, 65);
             txtNome.MaxLength = 100;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(125, 27);
+            txtNome.PlaceholderText = "Nome e Sobrenome";
+            txtNome.Size = new Size(152, 27);
             txtNome.TabIndex = 1;
             // 
             // lblCpf
@@ -109,7 +110,8 @@
             txtEmail.Location = new Point(159, 381);
             txtEmail.MaxLength = 100;
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(125, 27);
+            txtEmail.PlaceholderText = "ex: nome@email.com";
+            txtEmail.Size = new Size(169, 27);
             txtEmail.TabIndex = 7;
             // 
             // mskCpf
@@ -147,10 +149,63 @@
             dgvClientes.Size = new Size(936, 343);
             dgvClientes.TabIndex = 10;
             // 
+            // colId
+            // 
+            colId.DataPropertyName = "Id";
+            colId.HeaderText = "ID";
+            colId.MinimumWidth = 6;
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            // 
+            // colNome
+            // 
+            colNome.HeaderText = "Nome";
+            colNome.MinimumWidth = 6;
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // ColCpf
+            // 
+            ColCpf.HeaderText = "C.P.F.";
+            ColCpf.MinimumWidth = 6;
+            ColCpf.Name = "ColCpf";
+            ColCpf.ReadOnly = true;
+            // 
+            // colDataNascimento
+            // 
+            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
+            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
+            colDataNascimento.HeaderText = "Data de Nascimento";
+            colDataNascimento.MinimumWidth = 6;
+            colDataNascimento.Name = "colDataNascimento";
+            colDataNascimento.ReadOnly = true;
+            // 
+            // colIdade
+            // 
+            colIdade.HeaderText = "Idade";
+            colIdade.MinimumWidth = 6;
+            colIdade.Name = "colIdade";
+            colIdade.ReadOnly = true;
+            // 
+            // colEmail
+            // 
+            colEmail.HeaderText = "Email";
+            colEmail.MinimumWidth = 6;
+            colEmail.Name = "colEmail";
+            colEmail.ReadOnly = true;
+            // 
+            // colTotalDevido
+            // 
+            colTotalDevido.HeaderText = "Total Devido";
+            colTotalDevido.MinimumWidth = 6;
+            colTotalDevido.Name = "colTotalDevido";
+            colTotalDevido.ReadOnly = true;
+            // 
             // txtPesquisar
             // 
             txtPesquisar.Location = new Point(718, 23);
             txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.PlaceholderText = "Ex: Maria, maria";
             txtPesquisar.Size = new Size(568, 27);
             txtPesquisar.TabIndex = 11;
             txtPesquisar.TextChanged += txtPesquisar_TextChanged;
@@ -223,58 +278,6 @@
             lblPágina.Size = new Size(92, 20);
             lblPágina.TabIndex = 17;
             lblPágina.Text = "Página Atual";
-            // 
-            // colId
-            // 
-            colId.DataPropertyName = "Id";
-            colId.HeaderText = "ID";
-            colId.MinimumWidth = 6;
-            colId.Name = "colId";
-            colId.ReadOnly = true;
-            // 
-            // colNome
-            // 
-            colNome.HeaderText = "Nome";
-            colNome.MinimumWidth = 6;
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
-            // 
-            // ColCpf
-            // 
-            ColCpf.HeaderText = "C.P.F.";
-            ColCpf.MinimumWidth = 6;
-            ColCpf.Name = "ColCpf";
-            ColCpf.ReadOnly = true;
-            // 
-            // colDataNascimento
-            // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colDataNascimento.DefaultCellStyle = dataGridViewCellStyle1;
-            colDataNascimento.HeaderText = "Data de Nascimento";
-            colDataNascimento.MinimumWidth = 6;
-            colDataNascimento.Name = "colDataNascimento";
-            colDataNascimento.ReadOnly = true;
-            // 
-            // colIdade
-            // 
-            colIdade.HeaderText = "Idade";
-            colIdade.MinimumWidth = 6;
-            colIdade.Name = "colIdade";
-            colIdade.ReadOnly = true;
-            // 
-            // colEmail
-            // 
-            colEmail.HeaderText = "Email";
-            colEmail.MinimumWidth = 6;
-            colEmail.Name = "colEmail";
-            colEmail.ReadOnly = true;
-            // 
-            // colTotalDevido
-            // 
-            colTotalDevido.HeaderText = "Total Devido";
-            colTotalDevido.MinimumWidth = 6;
-            colTotalDevido.Name = "colTotalDevido";
-            colTotalDevido.ReadOnly = true;
             // 
             // TelaClientes
             // 

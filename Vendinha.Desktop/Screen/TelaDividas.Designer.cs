@@ -40,12 +40,13 @@
             btnProximo = new Button();
             lblPagina = new Label();
             txtPesquisarCliente = new TextBox();
+            lblPesquisar = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvDividas).BeginInit();
             SuspendLayout();
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(12, 408);
+            btnCadastrar.Location = new Point(12, 407);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(115, 63);
             btnCadastrar.TabIndex = 0;
@@ -128,9 +129,9 @@
             cmbClientes.DisplayMember = "Nome";
             cmbClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbClientes.FormattingEnabled = true;
-            cmbClientes.Location = new Point(27, 118);
+            cmbClientes.Location = new Point(27, 180);
             cmbClientes.Name = "cmbClientes";
-            cmbClientes.Size = new Size(151, 28);
+            cmbClientes.Size = new Size(226, 28);
             cmbClientes.TabIndex = 3;
             cmbClientes.ValueMember = "Id";
             cmbClientes.SelectedIndexChanged += cmbClientes_SelectedIndexChanged;
@@ -138,17 +139,17 @@
             // lblClientes
             // 
             lblClientes.AutoSize = true;
-            lblClientes.Location = new Point(27, 95);
+            lblClientes.Location = new Point(27, 127);
             lblClientes.Name = "lblClientes";
-            lblClientes.Size = new Size(61, 20);
+            lblClientes.Size = new Size(132, 40);
             lblClientes.TabIndex = 4;
-            lblClientes.Text = "Clientes";
+            lblClientes.Text = "Todos os clientes\r\ncom e sem dívidas";
             lblClientes.Click += lblClientes_Click;
             // 
             // lblValor
             // 
             lblValor.AutoSize = true;
-            lblValor.Location = new Point(27, 179);
+            lblValor.Location = new Point(27, 232);
             lblValor.Name = "lblValor";
             lblValor.Size = new Size(43, 20);
             lblValor.TabIndex = 5;
@@ -156,9 +157,10 @@
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(30, 216);
+            txtValor.Location = new Point(30, 269);
             txtValor.Name = "txtValor";
-            txtValor.Size = new Size(125, 27);
+            txtValor.PlaceholderText = "Ex: 50,00 ou 50.00 ou 50";
+            txtValor.Size = new Size(223, 27);
             txtValor.TabIndex = 6;
             // 
             // lblAnterior
@@ -192,18 +194,28 @@
             // 
             // txtPesquisarCliente
             // 
-            txtPesquisarCliente.Location = new Point(27, 50);
+            txtPesquisarCliente.Location = new Point(27, 64);
             txtPesquisarCliente.Name = "txtPesquisarCliente";
             txtPesquisarCliente.PlaceholderText = "Pesquisar cliente...";
             txtPesquisarCliente.Size = new Size(226, 27);
             txtPesquisarCliente.TabIndex = 10;
             txtPesquisarCliente.TextChanged += txtPesquisarCliente_TextChanged;
             // 
+            // lblPesquisar
+            // 
+            lblPesquisar.AutoSize = true;
+            lblPesquisar.Location = new Point(27, 9);
+            lblPesquisar.Name = "lblPesquisar";
+            lblPesquisar.Size = new Size(208, 40);
+            lblPesquisar.TabIndex = 11;
+            lblPesquisar.Text = "Digite aqui o nome do cliente\r\n que deseja pesquisar";
+            // 
             // TelaDividas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1236, 542);
+            ClientSize = new Size(1018, 482);
+            Controls.Add(lblPesquisar);
             Controls.Add(txtPesquisarCliente);
             Controls.Add(lblPagina);
             Controls.Add(btnProximo);
@@ -243,5 +255,6 @@
         private Button btnProximo;
         private Label lblPagina;
         private TextBox txtPesquisarCliente;
+        private Label lblPesquisar;
     }
 }
