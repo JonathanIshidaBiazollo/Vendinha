@@ -82,7 +82,7 @@ Observação: O arquivo .env NÂO FOI disponibilizado no repositório por quest�
 
 ## 🎓 Finalidade
 Projeto desenvolvido com fins acadêmicos com o fim de aplicar os conceitos aprendidos na disciplina de Plataforma de Desenvolvimento de sistemas como:
-- Poogramação Orientada a objetos
+- Programação Orientada a objetos
 - CRUD
 - Validação de Dados
 - ORM
