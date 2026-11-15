@@ -52,23 +52,46 @@ Gerenciar clientes e suas dívidas por meio de um sistema de interface gráfica.
 
 1. Clone o repositório.
 
-Abra a solução no Visual Studio.
+2. Abra a solução no Visual Studio.
 
-Instale ou restaure os pacotes NuGet necessários.
+3. Instale ou restaure os pacotes NuGet necessários.
 
-Crie o banco de dados PostgreSQL chamado vendinha.
+4. Crie o banco de dados PostgreSQL chamado vendinha.
 
-Execute o script SQL disponibilizado no repositório.
+5. Execute o script SQL disponibilizado no repositório.
+    - Os scripts foram separados em 3 arquivos, execute-os na sequência 1 a 1 para evitar erros no postgre
 
-Configure o arquivo .env com a conexão do seu banco de dados.
+6. Configure o arquivo .env com a conexão do seu banco de dados.
+    - Ex:VENDINHA_CONEXAO=Host=localhost;Port=5432;Database=vendinha;Username=postgres;Password=SUA_SENHA_AQUI
 
-Compile e execute o projeto.
+7. Compile e execute o projeto.
 
-Observação: O arquivo .env não é disponibilizado no repositório por questões de segurança. Cada usuário deverá criar seu próprio arquivo com as configurações locais.
+Observação: O arquivo .env não FOI disponibilizado no repositório por questões de segurança. Cada usuário deverá criar seu próprio arquivo com as configurações locais.Veja o exemplo de conexão no ítem 6 acima trocando apenas a senha
 
 
 ## 🎓 Finalidade
+Projeto desenvolvido com fins acadêmicos com o fim de aplicar os conceitos aprendidos na disciplina de Plataforma de Desenvolvimento de sistemas como:
+- Poogramação Orientada a objetos
+- CRUD
+- Validação de Dados
+- ORM
+- Integração entre a linguagem C# e PostgreSQL
+- Desenvolvimento de interfaces gráficas
 
+## 📸 Capturas de tela
+
+## 📸 Capturas de tela
+![Tela Principal](CapturasDeTela/TelaPrincipal.png)
+
+![Tela de Clientes](CapturasDeTela/TelaClientes.png)
+
+![Tela de dívidas](CapturasDeTela/TelaDividas.png)
+
+![Exemplo de Mensagem de Erro](CapturasDeTela/ExemploDeErro01.png)
+
+![Exemplo de Mensagem de Erro](CapturasDeTela/ExemploDeErro02.png)
+
+![Exemplo de Mensagem de Erro](CapturasDeTela/ExemploDeErro03.png)
 
 ## 👨‍💻 Autor
 
