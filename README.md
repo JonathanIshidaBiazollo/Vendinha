@@ -67,7 +67,7 @@ O projeto está organizado em camadas para separar as responsabilidades:
     ### Passo01: 
     ![Passo 01:](CapturasDeTela/zip01.png)
 
-    ### Passo01: 
+    ### Passo02: 
     ![Passo 02:](CapturasDeTela/zip02.png)
 
 2. Abra a solução no Visual Studio.
