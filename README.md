@@ -79,8 +79,6 @@ Projeto desenvolvido com fins acadêmicos com o fim de aplicar os conceitos apre
 - Desenvolvimento de interfaces gráficas
 
 ## 📸 Capturas de tela
-
-## 📸 Capturas de tela
 ![Tela Principal](CapturasDeTela/TelaPrincipal.png)
 
 ![Tela de Clientes](CapturasDeTela/TelaClientes.png)
