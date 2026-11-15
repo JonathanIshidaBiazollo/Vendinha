@@ -47,20 +47,24 @@ Gerenciar clientes e suas dívidas por meio de um sistema de interface gráfica.
 
 ## 📁 Estrutura do projeto
 
-
-
-## 🗄️ Banco de dados
-
-
-### Clientes
-
-
-### Dívidas
-
-
-
 ## ⚙️ Configuração do ambiente
+⚙️ Configuração do ambiente
 
+1. Clone o repositório.
+
+Abra a solução no Visual Studio.
+
+Instale ou restaure os pacotes NuGet necessários.
+
+Crie o banco de dados PostgreSQL chamado vendinha.
+
+Execute o script SQL disponibilizado no repositório.
+
+Configure o arquivo .env com a conexão do seu banco de dados.
+
+Compile e execute o projeto.
+
+Observação: O arquivo .env não é disponibilizado no repositório por questões de segurança. Cada usuário deverá criar seu próprio arquivo com as configurações locais.
 
 
 ## 🎓 Finalidade
