@@ -63,7 +63,11 @@ O projeto está organizado em camadas para separar as responsabilidades:
 
 1. Clone o repositório.
     Caso baixe como ZIP é necessário clicar com o botão direito do mouse, depois clicar em propriedades e marcar a opção de Desbloquear para que o projeto seja executado corretamente no Visual Studio. Abaixo como fazer o passo a passo.
+
+    ### Passo01: 
     ![Passo 01:](CapturasDeTela/zip01.png)
+
+    ### Passo01: 
     ![Passo 02:](CapturasDeTela/zip02.png)
 
 2. Abra a solução no Visual Studio.
