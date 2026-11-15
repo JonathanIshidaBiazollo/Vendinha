@@ -112,3 +112,6 @@ Projeto desenvolvido com fins acadêmicos com o fim de aplicar os conceitos apre
 **Jonathan Ishida Biazollo**
 
 Bacharelado em Ciência da Computação — UNIMAR.
+
+## 📄 Licença
+Trabalho desenvolvido para fins acadêmicos, pode ser usado como consulta com os mesmos propósitos.
