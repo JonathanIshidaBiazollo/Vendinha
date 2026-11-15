@@ -35,15 +35,15 @@ Gerenciar clientes e suas dívidas por meio de um sistema de interface gráfica.
 
 
 ## 🛠️ Tecnologias utilizadas
-- ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat&logo=csharp&logoColor=white) **C#** — Linguagem de programação.
-- ![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white) **.NET** — Plataforma de desenvolvimento.
-- ![Windows Forms](https://img.shields.io/badge/Windows_Forms-0078D4?style=flat&logo=windows&logoColor=white) **Windows Forms** — Interface gráfica.
-- ![Entity Framework Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=flat&logo=dotnet&logoColor=white) **Entity Framework Core** — ORM para acesso ao banco de dados.
-- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white) **PostgreSQL** — Banco de dados relacional.
-- ![Npgsql](https://img.shields.io/badge/Npgsql-336791?style=flat&logo=postgresql&logoColor=white) **Npgsql** — Provedor de conexão com PostgreSQL.
-- ![Visual Studio](https://img.shields.io/badge/Visual_Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white) **Visual Studio** — Ambiente de desenvolvimento.
-- ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) **Git** — Controle de versão.
-- ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) **GitHub** — Hospedagem do repositório.
+- ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat&logo=csharp&logoColor=white) — Linguagem de programação.
+- ![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white) — Plataforma de desenvolvimento.
+- ![Windows Forms](https://img.shields.io/badge/Windows_Forms-0078D4?style=flat&logo=windows&logoColor=white)  — Interface gráfica.
+- ![Entity Framework Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=flat&logo=dotnet&logoColor=white) — ORM para acesso ao banco de dados.
+- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white) — Banco de dados relacional.
+- ![Npgsql](https://img.shields.io/badge/Npgsql-336791?style=flat&logo=postgresql&logoColor=white) — Provedor de conexão com PostgreSQL.
+- ![Visual Studio](https://img.shields.io/badge/Visual_Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white)  — Ambiente de desenvolvimento.
+- ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) — Controle de versão.
+- ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) — Hospedagem do repositório.
 
 ## 📁 Estrutura do projeto
 
