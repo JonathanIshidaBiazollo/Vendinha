@@ -46,6 +46,17 @@ Gerenciar clientes e suas dívidas por meio de um sistema de interface gráfica.
 - ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white) — Hospedagem do repositório.
 
 ## 📁 Estrutura do projeto
+O projeto está organizado em camadas para separar as responsabilidades:
+
+- Models/ — Classes que representam as entidades
+
+- Services/ — Regras de negócio e operações do sistema
+
+- Contexts/ — Configuração do acesso ao banco de dados
+
+- Screen/ — Formulários e telas da aplicação
+
+- Imagens/ — Imagens utilizadas no sistema
 
 ## ⚙️ Configuração do ambiente
 ⚙️ Configuração do ambiente
