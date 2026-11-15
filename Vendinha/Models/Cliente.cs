@@ -14,8 +14,8 @@ namespace Vendinha.Models {
         public string Nome {  get; set; } = "";//Para parar de dar aqueles avisos de que a propriedade precisa sair como not null do construtor
 
         [Required(ErrorMessage="Preencha o campo cpf")]
+        [RegularExpression(@"^[0-9]{11}$", ErrorMessage = "O CPF deve conter apenas números de 0 a 9")]
         [StringLength(11, MinimumLength = 11, ErrorMessage = "O CPF deve possuir deve ter exatamente 11 números")]
-        [RegularExpression(@"^\d{11}$", ErrorMessage = "Os números de CPF vão de 0 a 9")]
         public string Cpf {  get; set; } = "";
 
         public DateTime DataNascimento { get; set; }//Melhor pegar só a data sem horário

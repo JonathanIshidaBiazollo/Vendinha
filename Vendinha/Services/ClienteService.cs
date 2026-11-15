@@ -83,7 +83,16 @@ namespace Vendinha.Services {
 
             erros = new List<ValidationResult>();//a lista é criada vazia, mas se houver erros, vai ser colocado onde deu o erro
 
-            return Validator.TryValidateObject(cliente, contextoValidacao, erros, true);//retorna os erros e se o cliente passou na validação, com true or false
+            if(!Validator.TryValidateObject(cliente, contextoValidacao, erros, true)) {//retorna os erros e se o cliente passou na validação, com true or false
+                return false;
+            }
+
+            if (!validarCpf(cliente.Cpf)) {
+                erros.Add(new ValidationResult("CPF inválido!"));
+                return false;
+            }
+
+            return true;
         }
 
         public bool Criar(Cliente cliente, out List <ValidationResult> erros){
@@ -170,6 +179,56 @@ namespace Vendinha.Services {
             var resultado  = contexto.Clientes
                 .Where(c => EF.Functions.ILike(c.Nome, $"%{pesquisa}%"));
             return resultado.Count();
+        }
+
+        private bool validarCpf(string cpf) {
+            //Obs: eu poderia colocar validação de se o cpf possuí somente números ou
+            //se é nulo ou não, porém por causa do uso da máscara e da maneira como
+            //o campo cpf foi definido da Model Clientes seria escrever mais código à toa.
+
+            if(cpf.Length != 11 || cpf.All(digito => digito == cpf[0])) {
+                return false;
+            }
+
+            //Cálculo do primeiro dígito verificador
+            int soma = 0;
+            int multiplicador = 10;
+            for(int i = 0; i <= cpf.Length - 3; i++) {
+                soma += (cpf[i] - '0') * multiplicador;//conversão de string para numérico, não vale a pena converter toda a string pra int pois e o primeiro dígito for 0 ele será desconsiderado na hr de virar int
+                multiplicador--;
+            }
+
+            int resto = soma % 11;
+            int digitoVerificador = 11 - resto;
+
+            if (digitoVerificador >= 10) {
+                digitoVerificador = 0;
+            }
+
+            if (digitoVerificador != cpf[9] - '0') {
+                return false;
+            }
+
+            //Cálculo do segundo dígito verificador
+            soma = 0;
+            multiplicador = 11;
+            for (int i = 0; i <= cpf.Length - 2; i++) {
+                soma += (cpf[i] -  '0') * multiplicador;
+                multiplicador--;
+            }
+
+            resto = soma % 11;
+            digitoVerificador = 11 - resto;
+
+            if(digitoVerificador >= 10) {
+                digitoVerificador = 0;
+            }
+
+            if(digitoVerificador != cpf[10] - '0') {
+                return false;
+            }
+
+            return true;
         }
     }
 }

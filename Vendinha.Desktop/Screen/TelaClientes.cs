@@ -171,7 +171,7 @@ namespace Vendinha.Desktop {
             mskCpf.Text = dgvClientes.SelectedRows[0].Cells[2].Value.ToString();
             dtpDataNascimento.Value = Convert.ToDateTime(dgvClientes.SelectedRows[0].Cells[3].Value);//Essa conversão diferente é por causa do formato DateTime
             txtEmail.Text = dgvClientes.SelectedRows[0].Cells[5].Value?.ToString() ?? "";//esses ? e "" é pq como email pode ser nulo, se de fato ele for vai causar um erro
-            btnCadastrar.Text = "Salvar Alterações";
+            btnCadastrar.Text = "Salvar Alteração";
             btnCadastrar.Image = Properties.Resources.disk;
             btnCancelarEdicao.Visible = true;
         }
