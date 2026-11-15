@@ -66,7 +66,7 @@ Gerenciar clientes e suas dívidas por meio de um sistema de interface gráfica.
 
 7. Compile e execute o projeto.
 
-Observação: O arquivo .env não FOI disponibilizado no repositório por questões de segurança. Cada usuário deverá criar seu próprio arquivo com as configurações locais.Veja o exemplo de conexão no ítem 6 acima trocando apenas a senha
+Observação: O arquivo .env NÂO FOI disponibilizado no repositório por questões de segurança. Cada usuário deverá criar seu próprio arquivo com as configurações locais. Veja o exemplo de conexão no ítem 6 acima trocando apenas a senha
 
 
 ## 🎓 Finalidade
