@@ -148,8 +148,8 @@ namespace Vendinha.Desktop {
                     CarregarDados();
                 } else {
                     MessageBox.Show("Não foi possível excluir o cliente,\n" +
-                                    "Ele possuí dívidas cadastradas\n" +
-                                    "Ou não existe mais"
+                                    "pois ele possuí dívidas cadastradas\n" +
+                                    "PAGAS OU NÃO. "
                                     );
                 }
             }
