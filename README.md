@@ -79,12 +79,17 @@ Projeto desenvolvido com fins acadêmicos com o fim de aplicar os conceitos apre
 - Desenvolvimento de interfaces gráficas
 
 ## 📸 Capturas de tela
+
+### Tela Principal
 ![Tela Principal](CapturasDeTela/TelaPrincipal.png)
 
+### 👤 Gerenciamento de clientes
 ![Tela de Clientes](CapturasDeTela/TelaClientes.png)
 
+### 💰 Gerenciamento de dívidas
 ![Tela de dívidas](CapturasDeTela/TelaDividas.png)
 
+### Telas de mensagens de erro
 ![Exemplo de Mensagem de Erro](CapturasDeTela/ExemploDeErro01.png)
 
 ![Exemplo de Mensagem de Erro](CapturasDeTela/ExemploDeErro02.png)
